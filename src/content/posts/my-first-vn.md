@@ -12,9 +12,7 @@ draft: false
 :spoiler[I'm just testing, ignore this]
 
 ---
-title: Funny dialogue
-published: 2023-10-19
-// ...
+Funny dialogue
 ---
 
 <video width="100%" controls preload="metadata">
