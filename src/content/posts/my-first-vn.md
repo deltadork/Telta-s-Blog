@@ -9,7 +9,7 @@ draft: false
 
 ## My take. on rakuen
 
-spoiler[I'm just testing, ignore this]
+:spoiler[I'm just testing, ignore this]
 
 ---
 title: Funny dialogue
