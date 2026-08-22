@@ -9,7 +9,7 @@ draft: false
 
 ## My take. on rakuen
 
-:spoiler[I'm just testing, ignore this]
+uhmmm:spoiler[I'm just testing, ignore this]
 
 <video width="100%" controls preload="metadata">
   <source src="https://files.catbox.moe/e04tu4.mp4" type="video/mp4">
