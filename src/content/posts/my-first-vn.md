@@ -2,6 +2,7 @@
 title: First post
 published: 2026-08-22
 description: About everything.
+image: https://files.catbox.moe/0kdd8v.png
 tags: []
 category: Other
 draft: false
