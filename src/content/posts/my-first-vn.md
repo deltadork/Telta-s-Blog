@@ -4,7 +4,7 @@ published: 2026-08-22
 description: About everything.
 tags: [Visual Novel]
 category: Reviews
-draft: false
+draft: true
 ---
 
 Hello and welcome. I'm not sure what kind of posts will I do here yet, but the main direction is visual novel reviews or dumps. 
