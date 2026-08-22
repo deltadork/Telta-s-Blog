@@ -16,5 +16,3 @@ I used to use discord as a place where I can dump random thoughts, notes, screen
 Obviously, this won't be a full replacement. It will be more like a cleaned up version, stand out screenshots or videos and anlysis, reviews, whatever. No one will read it, but it's still gonna be useful for me since I like to reminiscence :spoiler[waste time] over my experience with VNs.
 
 よろしくお願いいたします。
-
-![My soul](https://files.catbox.moe/0kdd8v.png)
