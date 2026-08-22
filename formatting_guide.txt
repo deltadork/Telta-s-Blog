@@ -53,7 +53,17 @@ Your warning text goes here.
 :::
 
 (Other types: note, tip, important, caution)
+Use <br> tags: Drop one or more between paragraphs for instant vertical space:
 
+
+6. Markdown
+
+First paragraph.
+
+<br>
+<br>
+
+Second paragraph.
 
 ==================================================
 DEPLOYING: Save file (Ctrl+S) -> Run deploy.bat
