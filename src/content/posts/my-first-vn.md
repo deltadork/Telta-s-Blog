@@ -7,7 +7,7 @@ category: Other
 draft: false
 ---
 
-Hello and welcome. I'm not sure what kind of posts will I do here yet, but the main direction is visual novel reviews or dumps. 
+Hello and welcome. I'm not sure what kind of posts will I do here yet, but the main direction is visual novel reviews or thought dumps. 
 
 I used to use discord as a place where I can dump random thoughts, notes, screenshots, etc. in dedicated personal server, but this method is flawed since eventually server will be lost in time or my account will be banned. That's why I will try to use this site from now on. 
 ![It looks like this](https://files.catbox.moe/xbdp6o.png)
@@ -17,8 +17,6 @@ Obviously, this won't be a full replacement. It will be more like a cleaned up v
 sigh
 :::warning[Warning!]
 Thanks for attention
-:::
+:::  
 
-  <summary>Click to view 18+ CG</summary>
-  <img src="https://files.catbox.moe/riwpp1.png" alt="NSFW CG" />
-</details>
+  <img src="https://files.catbox.moe/0kdd8v.png" alt="My soul" />
