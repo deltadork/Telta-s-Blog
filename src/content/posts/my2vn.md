@@ -4,7 +4,7 @@ published: 2026-08-22
 description: Unfiltered thoughts.
 tags: [Visual Novel]
 category: Reviews
-draft: true
+draft: false
 ---
 
 ## My take. on rakuen

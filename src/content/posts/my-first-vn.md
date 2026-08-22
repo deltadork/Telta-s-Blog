@@ -2,8 +2,8 @@
 title: First post
 published: 2026-08-22
 description: About everything.
-tags: [Visual Novel]
-category: Reviews
+tags: 
+category: Other
 draft: false
 ---
 
