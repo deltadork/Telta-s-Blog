@@ -53,7 +53,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-    avatar: "assets/images/rakuenpfp.png",
+    avatar: "VNs\Screenshots",
     name: "Telta",
     bio: "I'm a 変態包茎短小早漏ヲタク. Hope my insights will be helpful.",
     links: [
