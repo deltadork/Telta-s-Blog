@@ -11,10 +11,6 @@ draft: false
 
 :spoiler[I'm just testing, ignore this]
 
----
-Funny dialogue
----
-
 <video width="100%" controls preload="metadata">
   <source src="https://files.catbox.moe/e04tu4.mp4" type="video/mp4">
   Your browser does not support the video tag.
