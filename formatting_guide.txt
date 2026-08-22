@@ -1,66 +1,60 @@
-1. The Header (Frontmatter)
+==================================================
+            FUWARI BLOG CHEAT SHEET
+==================================================
 
-This goes at the absolute top of the file. Only use one per post. If you put two, the site breaks.
-YAML
+1. THE HEADER (FRONTMATTER)
+Place this at the very top of your .md file. Only ONE per file.
 
 ---
-title: Your Trash Opinion
+title: Your VN Review Title
 published: 2026-08-22
-description: Brief summary.
-tags: [Visual Novel, Rant]
+description: Brief summary for the index page.
+tags: [Visual Novel, Review]
 category: Reviews
 draft: false
 ---
 
-2. Basic Text
 
-Don't overcomplicate it. Use Markdown.
+2. BASIC TEXT
+## Main Section Header
+### Subsection Header
+**Bold Text**
+*Italic Text*
+Inline spoiler: :spoiler[hidden text goes here]
 
-    # Heading 1 (Don't use this, your title is already H1)
 
-    ## Heading 2 (Use this for main sections)
+3. IMAGES & 18+ CONTENT (Host everything on Catbox.moe)
 
-    ### Heading 3 (Sub-sections)
+- Normal Image:
+![Description](https://files.catbox.moe/image.png)
 
-    **Bold text**
-
-    *Italic text*
-
-    Inline text spoiler: :spoiler[your hidden degenerate thought]
-
-3. Images & 18+ CGs
-
-Host everything on Catbox.moe. Stop pushing porn to your GitHub repo unless you want to get banned by Microsoft.
-
-Normal Image:
-Markdown
-
-![Describe the image](https://files.catbox.moe/image.png)
-
-18+ / NSFW Image (Hides behind a click):
-HTML
-
+- 18+ / NSFW Spoiler Tag:
 <details>
-  <summary>NSFW CG - Click to view</summary>
+  <summary>Click to view 18+ CG</summary>
   <img src="https://files.catbox.moe/image.png" alt="NSFW" />
 </details>
 
-4. Videos
 
-YouTube Unlisted is objectively the best. Just paste their <iframe> embed code.
+4. VIDEOS
 
-If you must use a direct Catbox .mp4 file, do not use an iframe. Use this:
-HTML
+- YouTube (Unlisted): Paste the embed code from YouTube:
+<iframe width="100%" height="468" src="https://www.youtube.com/embed/YOUR_ID" frameborder="0" allowfullscreen></iframe>
 
+- Direct Catbox .mp4:
 <video width="100%" controls preload="metadata">
   <source src="https://files.catbox.moe/video.mp4" type="video/mp4">
 </video>
 
-5. Colored Warning Boxes (Admonitions)
 
-Use these if you want to yell at your readers. Supported types: note, tip, important, warning, caution.
-Markdown
+5. CALLOUT BOXES (Admonitions)
 
 :::warning[Skip This Route]
-This character's route is a massive waste of 50 hours.
+Your warning text goes here.
 :::
+
+(Other types: note, tip, important, caution)
+
+
+==================================================
+DEPLOYING: Save file (Ctrl+S) -> Run deploy.bat
+==================================================
