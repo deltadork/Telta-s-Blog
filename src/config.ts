@@ -53,28 +53,17 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	avatar: "rakuenpfp.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "Telta",
-	bio: "変態包茎短小早漏ヲタク",
-	links: [
+	bio: "I'm a 変態包茎短小早漏ヲタク. Hope my insights will be helpful.",
+	links: 
 		{
 			name: "Twitter",
 			icon: "fa6-brands:twitter", // Visit https://icones.js.org/ for icon codes
 			// You will need to install the corresponding icon set if it's not already included
 			// `pnpm add @iconify-json/<icon-set-name>`
-			url: "https://twitter.com",
+			url: "https://x.com/terutacel",
 		},
-		{
-			name: "Steam",
-			icon: "fa6-brands:steam",
-			url: "https://store.steampowered.com",
-		},
-		{
-			name: "GitHub",
-			icon: "fa6-brands:github",
-			url: "https://github.com/saicaca/fuwari",
-		},
-	],
 };
 
 export const licenseConfig: LicenseConfig = {

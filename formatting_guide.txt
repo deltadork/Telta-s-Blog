@@ -1,0 +1,66 @@
+1. The Header (Frontmatter)
+
+This goes at the absolute top of the file. Only use one per post. If you put two, the site breaks.
+YAML
+
+---
+title: Your Trash Opinion
+published: 2026-08-22
+description: Brief summary.
+tags: [Visual Novel, Rant]
+category: Reviews
+draft: false
+---
+
+2. Basic Text
+
+Don't overcomplicate it. Use Markdown.
+
+    # Heading 1 (Don't use this, your title is already H1)
+
+    ## Heading 2 (Use this for main sections)
+
+    ### Heading 3 (Sub-sections)
+
+    **Bold text**
+
+    *Italic text*
+
+    Inline text spoiler: :spoiler[your hidden degenerate thought]
+
+3. Images & 18+ CGs
+
+Host everything on Catbox.moe. Stop pushing porn to your GitHub repo unless you want to get banned by Microsoft.
+
+Normal Image:
+Markdown
+
+![Describe the image](https://files.catbox.moe/image.png)
+
+18+ / NSFW Image (Hides behind a click):
+HTML
+
+<details>
+  <summary>NSFW CG - Click to view</summary>
+  <img src="https://files.catbox.moe/image.png" alt="NSFW" />
+</details>
+
+4. Videos
+
+YouTube Unlisted is objectively the best. Just paste their <iframe> embed code.
+
+If you must use a direct Catbox .mp4 file, do not use an iframe. Use this:
+HTML
+
+<video width="100%" controls preload="metadata">
+  <source src="https://files.catbox.moe/video.mp4" type="video/mp4">
+</video>
+
+5. Colored Warning Boxes (Admonitions)
+
+Use these if you want to yell at your readers. Supported types: note, tip, important, warning, caution.
+Markdown
+
+:::warning[Skip This Route]
+This character's route is a massive waste of 50 hours.
+:::
