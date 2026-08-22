@@ -17,8 +17,6 @@ Obviously, this won't be a full replacement. It will be more like a cleaned up v
 sigh
 :::warning[Warning!]
 Thanks for attention
-:::
-<details>
-  <summary>Click to view image</summary>
-  <img src="https://files.catbox.moe/0kdd8v.png" alt="My soul" />
-</details>
+:::  
+
+![My soul](https://files.catbox.moe/0kdd8v.png)
