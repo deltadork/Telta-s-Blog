@@ -65,6 +65,11 @@ First paragraph.
 
 Second paragraph.
 
+7. For viewing draft site
+
+npm run dev
+http://localhost:4321
+
 ==================================================
 DEPLOYING: Save file (Ctrl+S) -> Run deploy.bat
 ==================================================
