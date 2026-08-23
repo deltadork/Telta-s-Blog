@@ -1,0 +1,7 @@
+---
+const { src, alt = "", caption } = Astro.props;
+---
+<figure class="my-6 text-center">
+  <img src={src} alt={alt} width="500" class="mx-auto block" />
+  {caption && <p class="mt-1 text-xs text-neutral-500">{caption}</p>}
+</figure>

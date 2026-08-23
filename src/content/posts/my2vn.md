@@ -1,5 +1,5 @@
 ---
-title: Rakuen ~Ai Kawarazu na Boku. no Baai~
+title: Review for Rakuen ~Ai Kawarazu na Boku. no Baai~
 published: 2026-08-22
 description: Unfiltered thoughts.
 tags: [Visual Novel]
@@ -7,9 +7,7 @@ category: Reviews
 draft: true
 ---
 
-## My take. on rakuen
 
-uhmmm:spoiler[I'm just testing, ignore this]
 
 sigh
 
