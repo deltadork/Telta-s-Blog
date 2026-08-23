@@ -5,7 +5,7 @@ description: Important!
 image: https://files.catbox.moe/3xa5gt.jpg
 category: Nukige
 tags: [Visual Novels, Recommendations, Nukige]
-draft: true
+draft: false
 ---
 
 What's the point of reading nukige? There was a time when I couldn't understand why someone would read a bloated 10-hour-long porn game where you have to wait an hour to reach the actual deal, when doujinshi provide all the meat in the first minute. Well, there are many reasons why this medium is so good for porn, but the main one is that it's simply more immersive. The power of prose, so to speak. Voices and animations enhance the experience a lot, but the text is the core. There is not a single NTR doujin that hits as hard as an NTR visual novel where you spend 5 hours romancing your waifu just for an ugly bastard to steal her.  
