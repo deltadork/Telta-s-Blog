@@ -9,6 +9,7 @@ draft: false
 ---
 
 What's the point of reading nukige? There was a time when I couldn't understand why someone would read a bloated 10-hour-long porn game where you have to wait an hour to reach the actual deal, when doujinshi provide all the meat in the first minute. Well, there are many reasons why this medium is so good for porn, but the main one is that it's simply more immersive. The power of prose, so to speak. Voices and animations enhance the experience a lot, but the text is the core. There is not a single NTR doujin that hits as hard as an NTR visual novel where you spend 5 hours romancing your waifu just for an ugly bastard to steal her.  
+
 Anyway, today I will showcase the 5 best visual novels I have played. They're all very different in terms of fetishes, but I feel there is at least one VN here that someone will enjoy. My favorite one will be at the end. Note that most of them are untranslated. Let's start.
 
 <h2 style="text-align: center;">Seven Days: Mishiranu JK to Misshitsu Seikatsu</h2>
