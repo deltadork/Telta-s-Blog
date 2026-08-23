@@ -46,7 +46,7 @@ export const navBarConfig: NavBarConfig = {
 export const profileConfig: ProfileConfig = {
 	avatar: "/rakuenpfp.png",
 	name: "Telta",
-	bio: "I'm a 変態包茎短小早漏ヲタク. Hope my insights will be helpful.",
+	bio: "I'm a 変態包茎短小早漏ヲタク. Hope my insights will be helpful. Blog is 18+, only open if you're ready for some extremy content.",
 	links: [
 		{
 			name: "Twitter",
