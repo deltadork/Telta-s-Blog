@@ -44,7 +44,7 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "/rakuenpfp.png",
+	avatar: "public/6aac6615-98dd-4510-92b8-e99c1a17519f.png",
 	name: "Telta",
 	bio: "Blog is 18+. I have graphomania, so keep that in mind.",
 	links: [
