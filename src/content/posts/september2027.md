@@ -1,5 +1,5 @@
 ---
-title: Sasasagu, Dimension Totsu lovers and other VNs. September 2027
+title: Sasasagu, Dimension Totsu lovers and other VNs. September 2026
 published: 2026-09-30
 description: Spoiler free
 image: /files/rakuen/6aaec3c1-fd1c-40b1-9479-84bbd5f2a0cd.png
