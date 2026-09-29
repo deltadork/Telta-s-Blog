@@ -18,7 +18,7 @@ Not my best month, but at least I found something truly impressive that made me 
 
 What people don't mention often is that the soundtrack is pretty fire too — some of the battle OST has been stuck in my head for days, like this one:
 <audio controls style="display: block; margin: 20px auto;">
-  <source src="/public/files/rakuen/2-21. RAPID OPTIMIZER.mp3" type="audio/mpeg">
+  <source src="/files/rakuen/2-21. RAPID OPTIMIZER.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
 
