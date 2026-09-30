@@ -47,7 +47,9 @@ The Steam release has a new afterstory, and overall I'm very satisfied with what
 I haven't reread the game to see all the new CGs and changes, so I'll just state my opinion on the art style. It's not better than the old one. Yes, it's more polished, and they fixed some weird CGs, but new readers probably won't mind it — still, the fact that Kuro's eyes no longer shine like brilliants is a crime.
 <img src="/files/rakuen/New Project(7).jpg" width="500" style="display: block; margin: 24px auto;"/>
 <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 0;">New CG looks very good, I admit it</p>
-I'd advise reading the fan port of the game first, then skimming through the Steam version for the new CGs and afterstories.
+I'd advise reading the fan port of the game first, then skimming through the Steam version for the new CGs and afterstories.   
+
+EDIT: steam remake has new scenes and CGs in the main game, so maybe it is better to read it. I don't know. Just decide based on which artstyle you like more. Personally, I don't think main scenario lacked anything (more like it was too slow sometimes), but since I did not reread whole game I can't comment on it with confidence
 
 <h2 style="text-align: center;">Meidokissa</h2>
 <img src="/files/rakuen/6ab329c6-0f91-4078-a7c4-4509e1661468.png" width="500" style="display: block; margin: 24px auto;"/>
