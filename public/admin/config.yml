@@ -1,0 +1,36 @@
+backend:
+  name: github
+  repo: deltadork/Telta-s-Blog
+  branch: main # CHANGE if your default branch is not "main"
+
+media_folder: public/files
+public_folder: /files
+
+collections:
+  - name: posts
+    label: Posts
+    label_singular: Post
+    folder: src/content/posts
+    create: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    summary: "{{title}} ({{published}})"
+    sortable_fields: [published, title]
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Published
+        name: published
+        widget: datetime
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - { label: Description, name: description, widget: string, required: false }
+      - { label: Cover image, name: image, widget: image, required: false }
+      - { label: Category, name: category, widget: string, required: false }
+      - { label: Tags, name: tags, widget: list, default: [] }
+      - { label: Draft (hidden from site), name: draft, widget: boolean, default: false }
+      - label: Body
+        name: body
+        widget: markdown
+        default: "\n\n<Comment />\n"
