@@ -27,7 +27,7 @@ import { remarkShortcodes } from "./src/plugins/remark-shortcodes.js";
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://teltablog.com/",
+	site: "https://www.teltablog.com",
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
