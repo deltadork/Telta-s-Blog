@@ -2,7 +2,7 @@
 title: Fan discs and slopge from the depths of DLsite slums. October 2026
 published: 2026-10-30
 description: Spoiler free
-image: \files\rakuen\6ad9a107-8f67-4878-9b17-33a331a91f9c.png
+image: /files/rakuen/6ad9a107-8f67-4878-9b17-33a331a91f9c.png
 tags: [Visual Novel]
 category: Monthly update
 draft: false
