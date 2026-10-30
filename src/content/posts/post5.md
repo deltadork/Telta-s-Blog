@@ -39,7 +39,7 @@ Basically, it's a high quality nukige. It takes a rare archetype of protagonist 
 
 Gameplay consists of hunting for sex scenes by following simple instructions, it will become grindy if you want to unlock everything by yourself, but other than that I have no complaints. Also, there is an option to unlock all sex scenes after the true ending, so I would advice to do that as soon as you start getting bored.  
 
-There are many things to complain about, but they don't ruin the work. Firstly, the bugs. Usually I don't mind them, but there were dozens of times were game just crushed for no reason and I had to replay same quests over and over. Next the narrative. As you would expect, it's nothing special, but I felt like lore dumps were getting in the way of the p(orn)lot sometimes. It also wouldn't hurt to see some sort of backstory or epiloge for the protagonist, since the question of why is she so weird is left open.  
+There are many things to complain about, but they don't ruin the work. Firstly, the bugs. Usually I don't mind them, but there were dozens of times were game just crushed for no reason and I had to replay same quests over and over. Next the narrative. As you would expect, it's nothing special, but I felt like lore dumps were getting in the way of the p(orn)lot sometimes. It also wouldn't hurt to see some sort of backstory or epilogue for the protagonist, since the question of why is she so weird is left open.  
 
 This game basically showed me the potential of nukiges with gameplay, and I'm very thankful for that.
 
