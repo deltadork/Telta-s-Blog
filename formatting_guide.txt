@@ -4,6 +4,9 @@
 npm run dev
 http://localhost:4321
 
+1.5. Admin page
+https://www.teltablog.com/admin/comments
+
 2. Passwords
 ADMIN_SECRET = ;f<3I9d0Y8P#6Zh6ecK_O$JR|nOzT{;W
 ADMIN_PASSWORD = Denya3005

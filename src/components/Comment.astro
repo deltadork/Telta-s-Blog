@@ -3,16 +3,18 @@
 const apiBase = "https://telta-comments-api.87kruk.workers.dev";
 ---
 
-<section id="comments" class="card-base mt-8 p-5 md:p-7" data-comments-api={apiBase}>
-  <div class="flex items-center justify-between gap-3 mb-5">
-    <h2 class="text-xl md:text-2xl font-bold">Comments</h2>
+<section id="comments" class="card-base mt-8 p-4 md:p-5" data-comments-api={apiBase}>
+  <div class="flex items-center justify-between gap-3 mb-4">
+    <h2 class="text-xl font-bold">Comments</h2>
     <span id="comment-count" class="text-sm opacity-60">Loading…</span>
   </div>
 
-  <form id="comment-form" class="flex flex-col gap-3 mb-7">
+  <form id="comment-form" class="flex flex-col gap-3 mb-5">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <label class="flex flex-col gap-1 text-sm">
-        Nickname <span class="text-red-500">*</span>
+        <span class="inline-flex items-baseline gap-1">
+          Nickname <span class="text-red-500">*</span>
+        </span>
         <input
           name="nickname"
           required
@@ -25,7 +27,9 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
       </label>
 
       <label class="flex flex-col gap-1 text-sm">
-        Email <span class="opacity-50">(optional, not displayed)</span>
+        <span class="inline-flex flex-wrap items-baseline gap-1">
+          Email <span class="opacity-50">(optional, not displayed)</span>
+        </span>
         <input
           name="email"
           type="email"
@@ -38,12 +42,14 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
     </div>
 
     <label class="flex flex-col gap-1 text-sm">
-      Comment <span class="text-red-500">*</span>
+      <span class="inline-flex items-baseline gap-1">
+        Comment <span class="text-red-500">*</span>
+      </span>
       <textarea
         name="content"
         required
         maxlength="5000"
-        rows="4"
+        rows="3"
         class="w-full rounded-xl border border-[var(--line-divider)] bg-transparent px-3 py-2 resize-y"
         placeholder="Write a comment…"
       ></textarea>
@@ -60,7 +66,6 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
       <p class="text-xs opacity-60">
         First-time comments require approval. Trusted commenters are published automatically.
       </p>
-
       <button
         type="submit"
         class="btn-regular rounded-xl px-5 py-2 font-semibold"
@@ -69,15 +74,10 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
       </button>
     </div>
 
-    <p
-      id="comment-message"
-      class="text-sm"
-      role="status"
-      aria-live="polite"
-    ></p>
+    <p id="comment-message" class="text-sm" role="status" aria-live="polite"></p>
   </form>
 
-  <div id="comment-list" class="flex flex-col gap-4">
+  <div id="comment-list" class="flex flex-col gap-3">
     <p class="text-sm opacity-60">Loading comments…</p>
   </div>
 </section>
@@ -97,7 +97,6 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
       location.pathname.replace(/^\/+|\/+$/g, "")
     );
 
-    // Persistent browser identity for trusted commenter recognition.
     let commenterToken = localStorage.getItem("telta-commenter-token");
 
     if (!commenterToken) {
@@ -105,21 +104,76 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
       localStorage.setItem("telta-commenter-token", commenterToken);
     }
 
-    const element = (tag, className, value) => {
-      const node = document.createElement(tag);
+    let displayedCount = 0;
 
+    const element = (tag, className = "", value) => {
+      const node = document.createElement(tag);
       if (className) node.className = className;
       if (value !== undefined) node.textContent = value;
-
       return node;
     };
 
+    function updateCount() {
+      count.textContent = `${displayedCount} ${
+        displayedCount === 1 ? "comment" : "comments"
+      }`;
+    }
+
+    function appendLocalComment(nickname, content, parentCard = null) {
+      const card = element(
+        "article",
+        "rounded-xl border border-[var(--line-divider)] p-3 sm:p-4"
+      );
+
+      const header = element(
+        "div",
+        "flex flex-wrap items-center gap-x-3 gap-y-1 mb-2"
+      );
+
+      header.append(element("strong", "font-semibold", nickname));
+      header.append(
+        element("time", "text-xs opacity-50", new Date().toLocaleString())
+      );
+
+      card.append(header);
+      card.append(
+        element("p", "text-sm whitespace-pre-wrap break-words", content)
+      );
+
+      const notice = element(
+        "p",
+        "mt-2 text-xs opacity-60",
+        "Your comment is awaiting moderation. Only you can see it until it is approved."
+      );
+
+      card.append(notice);
+
+      if (parentCard) {
+        let replies = parentCard.querySelector(".comment-replies");
+
+        if (!replies) {
+          replies = element(
+            "div",
+            "comment-replies ml-4 sm:ml-8 mt-3 flex flex-col gap-3"
+          );
+          parentCard.append(replies);
+        }
+
+        replies.append(card);
+      } else {
+        const emptyMessage = list.querySelector(":scope > p");
+        if (emptyMessage) list.replaceChildren();
+        list.append(card);
+      }
+
+      displayedCount++;
+      updateCount();
+    }
+
     function renderComments(comments) {
       list.replaceChildren();
-
-      count.textContent = `${comments.length} ${
-        comments.length === 1 ? "comment" : "comments"
-      }`;
+      displayedCount = comments.length;
+      updateCount();
 
       if (!comments.length) {
         list.append(
@@ -136,11 +190,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
 
       for (const comment of comments) {
         const key = comment.parent_id || 0;
-
-        if (!byParent.has(key)) {
-          byParent.set(key, []);
-        }
-
+        if (!byParent.has(key)) byParent.set(key, []);
         byParent.get(key).push(comment);
       }
 
@@ -148,7 +198,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         for (const comment of byParent.get(parentId) || []) {
           const card = element(
             "article",
-            "rounded-xl border border-[var(--line-divider)] p-4"
+            "rounded-xl border border-[var(--line-divider)] p-3 sm:p-4"
           );
 
           const header = element(
@@ -170,23 +220,22 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
 
           card.append(header);
 
-          const body = element(
-            "p",
-            "text-sm whitespace-pre-wrap break-words",
-            comment.content
+          card.append(
+            element(
+              "p",
+              "text-sm whitespace-pre-wrap break-words",
+              comment.content
+            )
           );
-
-          card.append(body);
 
           if (depth === 0) {
             const reply = element(
               "button",
-              "mt-3 text-sm font-semibold text-[var(--primary)] hover:underline",
+              "mt-2 text-sm font-semibold text-[var(--primary)] hover:underline",
               "Reply"
             );
 
             reply.type = "button";
-
             reply.addEventListener("click", () => {
               showReplyForm(comment.id, card);
             });
@@ -199,7 +248,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
           if (depth === 0 && byParent.has(comment.id)) {
             const replies = element(
               "div",
-              "ml-4 sm:ml-8 mt-3 flex flex-col gap-3"
+              "comment-replies ml-4 sm:ml-8 mt-3 flex flex-col gap-3"
             );
 
             renderGroup(comment.id, replies, 1);
@@ -233,24 +282,16 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
           name="content"
           required
           maxlength="5000"
-          rows="3"
+          rows="2"
           placeholder="Write a reply…"
           class="w-full rounded-lg border border-[var(--line-divider)] bg-transparent px-3 py-2 text-sm"
         ></textarea>
 
-        <div class="flex gap-2">
-          <button
-            class="btn-regular rounded-lg px-3 py-1 text-sm"
-            type="submit"
-          >
+        <div class="flex flex-wrap gap-2">
+          <button class="btn-regular rounded-lg px-3 py-1.5 text-sm" type="submit">
             Send reply
           </button>
-
-          <button
-            class="rounded-lg px-3 py-1 text-sm opacity-70"
-            type="button"
-            data-cancel
-          >
+          <button class="rounded-lg px-3 py-1.5 text-sm opacity-70" type="button" data-cancel>
             Cancel
           </button>
         </div>
@@ -258,9 +299,10 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         <p class="text-sm" role="status"></p>
       `;
 
-      replyForm
-        .querySelector("[data-cancel]")
-        .addEventListener("click", () => replyForm.remove());
+      replyForm.querySelector("[data-cancel]").addEventListener(
+        "click",
+        () => replyForm.remove()
+      );
 
       replyForm.addEventListener("submit", async (event) => {
         event.preventDefault();
@@ -275,9 +317,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         try {
           const response = await fetch(`${apiBase}/comments`, {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               post: slug,
               parent_id: parentId,
@@ -290,17 +330,23 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
           const result = await response.json();
 
           if (!response.ok) {
-            throw new Error(
-              result.error || "Could not submit reply."
-            );
+            throw new Error(result.error || "Could not submit reply.");
           }
 
-          status.textContent =
-            result.message || "Reply submitted for moderation.";
+          if (result.status === "approved") {
+            status.textContent = result.message || "Reply published.";
+            await loadComments();
+          } else {
+            appendLocalComment(
+              data.get("nickname"),
+              data.get("content"),
+              card
+            );
+            status.textContent = "Reply submitted for approval.";
+          }
 
           replyForm.reset();
           submit.remove();
-
         } catch (error) {
           status.textContent = error.message;
           submit.disabled = false;
@@ -319,13 +365,10 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         const data = await response.json();
 
         if (!response.ok) {
-          throw new Error(
-            data.error || "Could not load comments."
-          );
+          throw new Error(data.error || "Could not load comments.");
         }
 
         renderComments(data.comments || []);
-
       } catch (error) {
         list.replaceChildren(
           element(
@@ -334,7 +377,6 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
             `Comments could not be loaded: ${error.message}`
           )
         );
-
         count.textContent = "Unavailable";
       }
     }
@@ -352,9 +394,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
       try {
         const response = await fetch(`${apiBase}/comments`, {
           method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             post: slug,
             nickname: data.get("nickname"),
@@ -368,19 +408,23 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         const result = await response.json();
 
         if (!response.ok) {
-          throw new Error(
-            result.error || "Could not submit comment."
-          );
+          throw new Error(result.error || "Could not submit comment.");
         }
 
-        message.textContent =
-          result.message || "Comment submitted for moderation.";
+        if (result.status === "approved") {
+          message.textContent = result.message || "Your comment was published.";
+          await loadComments();
+        } else {
+          appendLocalComment(
+            data.get("nickname"),
+            data.get("content")
+          );
+          message.textContent = "Your comment was submitted for approval.";
+        }
 
         form.reset();
-
       } catch (error) {
         message.textContent = error.message;
-
       } finally {
         submit.disabled = false;
       }
