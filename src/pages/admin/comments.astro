@@ -159,13 +159,24 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
       }
 
       .actions {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 9px;
-        padding-top: 14px;
-        border-top: 1px solid color-mix(in srgb, CanvasText 12%, transparent);
-      }
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: center;
+  gap: 12px !important;
+  padding-top: 16px;
+  margin-top: 14px;
+  border-top: 1px solid color-mix(in srgb, CanvasText 12%, transparent);
+}
+
+.actions button {
+  display: inline-flex !important;
+  flex: 0 0 auto !important;
+  width: auto !important;
+  min-width: 90px;
+  margin: 0 4px 4px 0;
+  white-space: nowrap;
+}
 
       .trust-note {
         display: inline-flex;
