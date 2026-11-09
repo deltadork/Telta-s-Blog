@@ -1,6 +1,8 @@
+
 ---
 const apiBase = "https://telta-comments-api.87kruk.workers.dev";
 ---
+
 <html lang="en">
   <head>
     <meta charset="utf-8" />
@@ -8,115 +10,442 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
     <meta name="robots" content="noindex,nofollow" />
     <title>Comment moderation · Telta's Blog</title>
     <style>
-      :root { color-scheme: light dark; font-family: system-ui, sans-serif; }
-      #admin-comments-page { max-width: 900px; margin: 0 auto; padding: 32px 18px; background: Canvas; color: CanvasText; }
-      input, textarea, select, button { font: inherit; }
-      input, textarea, select { box-sizing: border-box; width: 100%; padding: 10px 12px; border: 1px solid color-mix(in srgb, CanvasText 25%, transparent); border-radius: 9px; background: Canvas; color: CanvasText; }
-      button { padding: 8px 13px; border: 1px solid color-mix(in srgb, CanvasText 25%, transparent); border-radius: 9px; cursor: pointer; background: color-mix(in srgb, CanvasText 8%, Canvas); color: CanvasText; }
-      button:disabled { opacity: .5; cursor: wait; }
-      .primary { background: #2563eb; color: white; border-color: #2563eb; }
-      .danger { color: #dc2626; }
-      .card { border: 1px solid color-mix(in srgb, CanvasText 20%, transparent); border-radius: 12px; padding: 16px; margin: 14px 0; }
-      .muted { opacity: .65; font-size: .9rem; }
-      .row { display: flex; gap: 9px; flex-wrap: wrap; align-items: center; }
-      .row > * { width: auto; }
-      #comments { white-space: pre-wrap; overflow-wrap: anywhere; }
-      [hidden] { display: none !important; }
+      :root {
+        color-scheme: light dark;
+        font-family: system-ui, sans-serif;
+      }
+
+      #admin-comments-page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 32px 18px;
+        background: Canvas;
+        color: CanvasText;
+      }
+
+      input, textarea, select, button {
+        font: inherit;
+      }
+
+      input, textarea, select {
+        box-sizing: border-box;
+        padding: 10px 12px;
+        border: 1px solid color-mix(in srgb, CanvasText 25%, transparent);
+        border-radius: 9px;
+        background: Canvas;
+        color: CanvasText;
+      }
+
+      button {
+        padding: 8px 13px;
+        border: 1px solid color-mix(in srgb, CanvasText 25%, transparent);
+        border-radius: 9px;
+        cursor: pointer;
+        background: color-mix(in srgb, CanvasText 8%, Canvas);
+        color: CanvasText;
+      }
+
+      button:disabled {
+        opacity: .5;
+        cursor: wait;
+      }
+
+      .primary {
+        background: #2563eb;
+        color: white;
+        border-color: #2563eb;
+      }
+
+      .danger {
+        color: #dc2626;
+      }
+
+      .trusted {
+        color: #16a34a;
+      }
+
+      .card {
+        border: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+        border-radius: 12px;
+        padding: 16px;
+        margin: 14px 0;
+      }
+
+      .muted {
+        opacity: .65;
+        font-size: .9rem;
+      }
+
+      .row {
+        display: flex;
+        gap: 9px;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      .row > * {
+        width: auto;
+      }
+
+      #comments {
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+      }
+
+      [hidden] {
+        display: none !important;
+      }
     </style>
   </head>
+
   <body id="admin-comments-page">
     <h1>Comment moderation</h1>
-    <p class="muted">Private moderation page for Telta's Blog. Only approved comments are visible publicly.</p>
+
+    <p class="muted">
+      Private moderation page for Telta's Blog.
+      Only approved comments are visible publicly.
+    </p>
+
     <section id="login" class="card">
       <h2>Administrator login</h2>
+
       <form id="login-form">
-        <label>Password<br /><input type="password" name="password" required autocomplete="current-password" /></label>
-        <p><button class="primary" type="submit">Log in</button></p>
+        <label>
+          Password<br />
+          <input
+            type="password"
+            name="password"
+            required
+            autocomplete="current-password"
+          />
+        </label>
+
+        <p>
+          <button class="primary" type="submit">Log in</button>
+        </p>
       </form>
     </section>
+
     <section id="panel" hidden>
       <div class="row">
-        <label>Show <select id="status"><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option></select></label>
-        <button id="refresh">Refresh</button><button id="logout">Log out</button>
+        <label>
+          Show
+          <select id="status">
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </label>
+
+        <button id="refresh" type="button">Refresh</button>
+        <button id="logout" type="button">Log out</button>
       </div>
+
       <p id="message" class="muted" role="status"></p>
       <div id="comments"></div>
     </section>
+
     <script define:vars={{ apiBase }}>
       const login = document.getElementById("login");
       const panel = document.getElementById("panel");
       const message = document.getElementById("message");
       const container = document.getElementById("comments");
       const statusSelect = document.getElementById("status");
+
       let token = sessionStorage.getItem("telta-comments-admin-token") || "";
-      const headers = () => ({ Authorization: `Bearer ${token}`, "Content-Type": "application/json" });
-      const node = (tag, text, cls = "") => { const n = document.createElement(tag); n.textContent = text; n.className = cls; return n; };
-      function showPanel() { login.hidden = true; panel.hidden = false; load(); }
+
+      const headers = () => ({
+        Authorization: `Bearer ${token}`,
+        "Content-Type": "application/json",
+      });
+
+      const node = (tag, text, cls = "") => {
+        const element = document.createElement(tag);
+        element.textContent = text;
+        element.className = cls;
+        return element;
+      };
+
+      function showPanel() {
+        login.hidden = true;
+        panel.hidden = false;
+        load();
+      }
+
       async function load() {
-        message.textContent = "Loading…"; container.replaceChildren();
+        message.textContent = "Loading…";
+        container.replaceChildren();
+
         try {
-          const response = await fetch(`${apiBase}/admin/comments?status=${statusSelect.value}`, { headers: headers() });
+          const response = await fetch(
+            `${apiBase}/admin/comments?status=${statusSelect.value}`,
+            { headers: headers() }
+          );
+
           const data = await response.json();
-          if (response.status === 401) { logout(); throw new Error("Session expired. Please log in again."); }
-          if (!response.ok) throw new Error(data.error || "Could not load comments.");
-          message.textContent = `${data.comments.length} ${statusSelect.value} comment(s)`;
-          if (!data.comments.length) container.append(node("p", "Nothing here yet.", "muted"));
+
+          if (response.status === 401) {
+            logout();
+            throw new Error("Session expired. Please log in again.");
+          }
+
+          if (!response.ok) {
+            throw new Error(data.error || "Could not load comments.");
+          }
+
+          message.textContent =
+            `${data.comments.length} ${statusSelect.value} comment(s)`;
+
+          if (!data.comments.length) {
+            container.append(node("p", "Nothing here yet.", "muted"));
+            return;
+          }
+
           for (const comment of data.comments) {
             const card = node("article", "", "card");
-            const title = node("strong", `${comment.nickname} · ${comment.post_slug}`);
-            const meta = node("p", `${new Date(comment.created_at * 1000).toLocaleString()} · ID ${comment.id}${comment.parent_id ? ` · Reply to #${comment.parent_id}` : ""}`, "muted");
+
+            const title = node(
+              "strong",
+              `${comment.nickname} · ${comment.post_slug}`
+            );
+
+            const meta = node(
+              "p",
+              `${new Date(comment.created_at * 1000).toLocaleString()} · ID ${comment.id}${comment.parent_id ? ` · Reply to #${comment.parent_id}` : ""}`,
+              "muted"
+            );
+
             const body = node("p", comment.content);
+
             card.append(title, meta, body);
-            if (comment.email) card.append(node("p", `Email: ${comment.email}`, "muted"));
+
+            if (comment.email) {
+              card.append(
+                node("p", `Email: ${comment.email}`, "muted")
+              );
+            }
+
             const actions = node("div", "", "row");
-            if (comment.status !== "approved") actions.append(action("Approve", () => update(comment.id, "approved"), "primary"));
-            if (comment.status !== "rejected") actions.append(action("Reject", () => update(comment.id, "rejected")));
-            if (comment.status !== "pending") actions.append(action("Return to pending", () => update(comment.id, "pending")));
-            actions.append(action("Delete", () => remove(comment.id), "danger"));
-            card.append(actions); container.append(card);
+
+            if (comment.status !== "approved") {
+              actions.append(
+                action(
+                  "Approve",
+                  () => update(comment.id, "approved"),
+                  "primary"
+                )
+              );
+            }
+
+            if (comment.status !== "rejected") {
+              actions.append(
+                action(
+                  "Reject",
+                  () => update(comment.id, "rejected")
+                )
+              );
+            }
+
+            if (comment.status !== "pending") {
+              actions.append(
+                action(
+                  "Return to pending",
+                  () => update(comment.id, "pending")
+                )
+              );
+            }
+
+            // Trust controls are only available for approved comments.
+            if (comment.commenter_id) {
+              if (comment.trusted) {
+                actions.append(
+                  action(
+                    "Revoke trust",
+                    () => changeTrust(comment.commenter_id, "DELETE"),
+                    "danger"
+                  )
+                );
+
+                card.append(
+                  node("p", "Trusted commenter · Future comments are auto-approved.", "muted trusted")
+                );
+              } else if (comment.status === "approved") {
+                actions.append(
+                  action(
+                    "Trust commenter",
+                    () => changeTrust(
+                      comment.commenter_id,
+                      "POST",
+                      comment.nickname
+                    ),
+                    "primary"
+                  )
+                );
+              }
+            }
+
+            actions.append(
+              action(
+                "Delete",
+                () => remove(comment.id),
+                "danger"
+              )
+            );
+
+            card.append(actions);
+            container.append(card);
           }
-        } catch (error) { message.textContent = error.message; }
+        } catch (error) {
+          message.textContent = error.message;
+        }
       }
-      function action(label, callback, cls = "") { const b = node("button", label, cls); b.addEventListener("click", callback); return b; }
+
+      function action(label, callback, cls = "") {
+        const button = node("button", label, cls);
+        button.type = "button";
+        button.addEventListener("click", callback);
+        return button;
+      }
+
       async function update(id, status) {
-        try { const r = await fetch(`${apiBase}/admin/comments/${id}/status`, { method: "PATCH", headers: headers(), body: JSON.stringify({ status }) }); const d = await r.json(); if (!r.ok) throw new Error(d.error || "Update failed."); await load(); }
-        catch (e) { message.textContent = e.message; }
+        try {
+          const response = await fetch(
+            `${apiBase}/admin/comments/${id}/status`,
+            {
+              method: "PATCH",
+              headers: headers(),
+              body: JSON.stringify({ status }),
+            }
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.error || "Update failed.");
+          }
+
+          await load();
+        } catch (error) {
+          message.textContent = error.message;
+        }
       }
+
+      async function changeTrust(commenterId, method, nickname = "") {
+        try {
+          const response = await fetch(
+            `${apiBase}/admin/trusted/${commenterId}`,
+            {
+              method,
+              headers: headers(),
+              ...(method === "POST"
+                ? { body: JSON.stringify({ nickname }) }
+                : {}),
+            }
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(
+              data.error || "Could not update trusted status."
+            );
+          }
+
+          message.textContent =
+            method === "POST"
+              ? "Commenter trusted. Future comments will be auto-approved."
+              : "Trust revoked. Future comments will require moderation.";
+
+          await load();
+        } catch (error) {
+          message.textContent = error.message;
+        }
+      }
+
       async function remove(id) {
-        if (!confirm(`Permanently delete comment #${id}?`)) return;
-        try { const r = await fetch(`${apiBase}/admin/comments/${id}`, { method: "DELETE", headers: headers() }); const d = await r.json(); if (!r.ok) throw new Error(d.error || "Delete failed."); await load(); }
-        catch (e) { message.textContent = e.message; }
+        if (!confirm(`Permanently delete comment #${id}?`)) {
+          return;
+        }
+
+        try {
+          const response = await fetch(
+            `${apiBase}/admin/comments/${id}`,
+            {
+              method: "DELETE",
+              headers: headers(),
+            }
+          );
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.error || "Delete failed.");
+          }
+
+          await load();
+        } catch (error) {
+          message.textContent = error.message;
+        }
       }
-      function logout() { token = ""; sessionStorage.removeItem("telta-comments-admin-token"); panel.hidden = true; login.hidden = false; container.replaceChildren(); }
-      document.getElementById("login-form").addEventListener("submit", async (event) => {
-        event.preventDefault(); message.textContent = "";
-        const password = new FormData(event.currentTarget).get("password");
-        const button = event.currentTarget.querySelector("button"); button.disabled = true;
-        const form = event.currentTarget;
 
-try {
-    const r = await fetch(`${apiBase}/admin/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password })
-    });
+      function logout() {
+        token = "";
+        sessionStorage.removeItem("telta-comments-admin-token");
+        panel.hidden = true;
+        login.hidden = false;
+        container.replaceChildren();
+      }
 
-    const d = await r.json();
+      document.getElementById("login-form").addEventListener(
+        "submit",
+        async (event) => {
+          event.preventDefault();
 
-    if (!r.ok) throw new Error(d.error || "Login failed.");
+          const form = event.currentTarget;
+          const password = new FormData(form).get("password");
+          const button = form.querySelector("button");
 
-    token = d.token;
-    sessionStorage.setItem("telta-comments-admin-token", token);
+          button.disabled = true;
+          message.textContent = "";
 
-    form.reset();
-    showPanel();
-}
-        finally { button.disabled = false; }
-      });
+          try {
+            const response = await fetch(`${apiBase}/admin/login`, {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ password }),
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+              throw new Error(data.error || "Login failed.");
+            }
+
+            token = data.token;
+
+            sessionStorage.setItem(
+              "telta-comments-admin-token",
+              token
+            );
+
+            form.reset();
+            showPanel();
+          } catch (error) {
+            message.textContent = error.message;
+            alert(error.message);
+          } finally {
+            button.disabled = false;
+          }
+        }
+      );
+
       document.getElementById("refresh").addEventListener("click", load);
       document.getElementById("logout").addEventListener("click", logout);
       statusSelect.addEventListener("change", load);
-      if (token) showPanel();
+
+      if (token) {
+        showPanel();
+      }
     </script>
   </body>
 </html>
