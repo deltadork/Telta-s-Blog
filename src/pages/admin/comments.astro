@@ -9,76 +9,40 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="robots" content="noindex,nofollow" />
     <title>Comment moderation · Telta's Blog</title>
-
     <style>
       :root {
         color-scheme: light dark;
         font-family: system-ui, sans-serif;
       }
 
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        padding: 40px 18px;
+      #admin-comments-page {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 32px 18px;
         background: Canvas;
         color: CanvasText;
       }
 
-      #admin-comments-page {
-        width: 100%;
-        max-width: 850px;
-        margin: 0 auto;
-      }
-
-      h1 {
-        margin: 0 0 8px;
-        font-size: 1.8rem;
-        font-weight: 750;
-        letter-spacing: -0.035em;
-      }
-
-      h2 {
-        margin: 0 0 14px;
-        font-size: 1.15rem;
-        font-weight: 650;
-      }
-
-      p {
-        line-height: 1.55;
-      }
-
-      input, select, button {
+      input, textarea, select, button {
         font: inherit;
       }
 
-      input, select {
+      input, textarea, select {
+        box-sizing: border-box;
         padding: 10px 12px;
-        border: 1px solid color-mix(in srgb, CanvasText 22%, transparent);
+        border: 1px solid color-mix(in srgb, CanvasText 25%, transparent);
         border-radius: 9px;
         background: Canvas;
         color: CanvasText;
       }
 
       button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-height: 38px;
-        padding: 8px 14px;
-        border: 1px solid color-mix(in srgb, CanvasText 22%, transparent);
+        padding: 8px 13px;
+        border: 1px solid color-mix(in srgb, CanvasText 25%, transparent);
         border-radius: 9px;
-        background: color-mix(in srgb, CanvasText 6%, Canvas);
-        color: CanvasText;
         cursor: pointer;
-        transition: background .15s, border-color .15s, opacity .15s;
-      }
-
-      button:hover:not(:disabled) {
-        background: color-mix(in srgb, CanvasText 12%, Canvas);
+        background: color-mix(in srgb, CanvasText 8%, Canvas);
+        color: CanvasText;
       }
 
       button:disabled {
@@ -88,25 +52,23 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
 
       .primary {
         background: #2563eb;
-        border-color: #2563eb;
         color: white;
-      }
-
-      .primary:hover:not(:disabled) {
-        background: #1d4ed8;
+        border-color: #2563eb;
       }
 
       .danger {
         color: #dc2626;
-        border-color: color-mix(in srgb, #dc2626 35%, transparent);
-      }
-
-      .danger:hover:not(:disabled) {
-        background: color-mix(in srgb, #dc2626 10%, Canvas);
       }
 
       .trusted {
         color: #16a34a;
+      }
+
+      .card {
+        border: 1px solid color-mix(in srgb, CanvasText 20%, transparent);
+        border-radius: 12px;
+        padding: 16px;
+        margin: 14px 0;
       }
 
       .muted {
@@ -114,170 +76,74 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         font-size: .9rem;
       }
 
-      .intro {
-        margin: 0 0 24px;
-      }
-
-      .card {
-        padding: 20px;
-        margin: 16px 0;
-        border: 1px solid color-mix(in srgb, CanvasText 16%, transparent);
-        border-radius: 14px;
-        background: color-mix(in srgb, CanvasText 2%, Canvas);
-      }
-
-      .toolbar {
+      .row {
         display: flex;
+        gap: 9px;
         flex-wrap: wrap;
         align-items: center;
-        gap: 12px;
-        margin: 22px 0 12px;
       }
 
-      .toolbar label {
-        display: flex;
-        align-items: center;
-        gap: 9px;
-        font-size: .9rem;
+      .row > * {
+        width: auto;
       }
 
-      .toolbar select {
-        min-width: 135px;
-      }
-
-      .comment-meta {
-        margin: 7px 0 12px;
-        font-size: .82rem;
-        opacity: .6;
-      }
-
-      .comment-body {
-        margin: 0 0 16px;
+      #comments {
         white-space: pre-wrap;
         overflow-wrap: anywhere;
-        line-height: 1.65;
-      }
-
-      .actions {
-  display: flex !important;
-  flex-direction: row !important;
-  flex-wrap: wrap !important;
-  align-items: center;
-  gap: 12px !important;
-  padding-top: 16px;
-  margin-top: 14px;
-  border-top: 1px solid color-mix(in srgb, CanvasText 12%, transparent);
-}
-
-.actions button {
-  display: inline-flex !important;
-  flex: 0 0 auto !important;
-  width: auto !important;
-  min-width: 90px;
-  margin: 0 4px 4px 0;
-  white-space: nowrap;
-}
-
-      .trust-note {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        margin: 0 0 14px;
-        font-size: .82rem;
-        color: #16a34a;
-      }
-
-      #message {
-        min-height: 22px;
-        margin: 10px 0;
-      }
-
-      #login-form {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-        max-width: 420px;
-      }
-
-      #login-form input {
-        display: block;
-        width: 100%;
-        margin-top: 7px;
-      }
-
-      #login-form button {
-        align-self: flex-start;
       }
 
       [hidden] {
         display: none !important;
       }
-
-      @media (max-width: 520px) {
-        body {
-          padding: 25px 14px;
-        }
-
-        .card {
-          padding: 15px;
-        }
-
-        .actions button {
-          flex: 1 1 auto;
-        }
-
-        .toolbar {
-          align-items: flex-start;
-        }
-      }
     </style>
   </head>
 
-  <body>
-    <main id="admin-comments-page">
-      <h1>Comment moderation</h1>
+  <body id="admin-comments-page">
+    <h1>Comment moderation</h1>
 
-      <p class="muted intro">
-        Manage comments on Telta's Blog. Only approved comments are visible publicly.
-      </p>
+    <p class="muted">
+      Private moderation page for Telta's Blog.
+      Only approved comments are visible publicly.
+    </p>
 
-      <section id="login" class="card">
-        <h2>Administrator login</h2>
+    <section id="login" class="card">
+      <h2>Administrator login</h2>
 
-        <form id="login-form">
-          <label>
-            Password
-            <input
-              type="password"
-              name="password"
-              required
-              autocomplete="current-password"
-            />
-          </label>
+      <form id="login-form">
+        <label>
+          Password<br />
+          <input
+            type="password"
+            name="password"
+            required
+            autocomplete="current-password"
+          />
+        </label>
 
+        <p>
           <button class="primary" type="submit">Log in</button>
-        </form>
-      </section>
+        </p>
+      </form>
+    </section>
 
-      <section id="panel" hidden>
-        <div class="toolbar">
-          <label>
-            Show
-            <select id="status">
-              <option value="pending">Pending</option>
-              <option value="approved">Approved</option>
-              <option value="rejected">Rejected</option>
-            </select>
-          </label>
+    <section id="panel" hidden>
+      <div class="row">
+        <label>
+          Show
+          <select id="status">
+            <option value="pending">Pending</option>
+            <option value="approved">Approved</option>
+            <option value="rejected">Rejected</option>
+          </select>
+        </label>
 
-          <button id="refresh" type="button">Refresh</button>
-          <button id="logout" type="button">Log out</button>
-        </div>
+        <button id="refresh" type="button">Refresh</button>
+        <button id="logout" type="button">Log out</button>
+      </div>
 
-        <p id="message" class="muted" role="status"></p>
-        <div id="comments"></div>
-      </section>
-    </main>
+      <p id="message" class="muted" role="status"></p>
+      <div id="comments"></div>
+    </section>
 
     <script define:vars={{ apiBase }}>
       const login = document.getElementById("login");
@@ -315,7 +181,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
       }
 
       async function load() {
-        message.textContent = "Loading…";
+        message.textContent = "Loading\u2026";
         container.replaceChildren();
 
         try {
@@ -351,20 +217,20 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
             card.append(
               node(
                 "strong",
-                `${comment.nickname} · ${comment.post_slug}`
+                `${comment.nickname} \u00b7 ${comment.post_slug}`
               )
             );
 
             card.append(
               node(
                 "p",
-                `${new Date(comment.created_at * 1000).toLocaleString()} · ID ${comment.id}${comment.parent_id ? ` · Reply to #${comment.parent_id}` : ""}`,
-                "comment-meta"
+                `${new Date(comment.created_at * 1000).toLocaleString()} \u00b7 ID ${comment.id}${comment.parent_id ? ` \u00b7 Reply to #${comment.parent_id}` : ""}`,
+                "muted"
               )
             );
 
             card.append(
-              node("p", comment.content, "comment-body")
+              node("p", comment.content)
             );
 
             if (comment.email) {
@@ -373,7 +239,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
               );
             }
 
-            const actions = node("div", "", "actions");
+            const actions = node("div", "", "row");
 
             if (comment.status !== "approved") {
               actions.append(
@@ -407,8 +273,8 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
               card.append(
                 node(
                   "p",
-                  "✓ Trusted commenter · Future comments are automatically approved.",
-                  "trust-note"
+                  "\u2713 Trusted commenter \u00b7 Future comments are automatically approved.",
+                  "muted trusted"
                 )
               );
 
