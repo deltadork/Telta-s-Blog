@@ -43,14 +43,22 @@ const builders = {
 
 	// blurred image, click to reveal
 	nsfw: (a) =>
-		html(
-			`<div style="text-align: center; margin: 16px auto;">
-  <img src="${esc(resolve(a.src))}" width="${esc(a.width || 500)}"
-       style="display: block; margin: 0 auto; max-width: 100%; filter: blur(20px); cursor: pointer; transition: filter 0.3s;"
-       onclick="event.stopPropagation(); event.preventDefault(); this.style.filter = this.style.filter === 'none' ? 'blur(20px)' : 'none';" />
-  <p style="font-size: 0.8rem; color: #888;">${esc(a.caption || "Click to reveal spoiler")}</p>
+    html(
+        `<div style="text-align: center; margin: 16px auto;">
+    <img
+        class="spoiler-image"
+        src="${esc(resolve(a.src))}"
+        width="${esc(a.width || 500)}"
+        style="display: block; margin: 0 auto; max-width: 100%;"
+        alt="${esc(a.caption || "Spoiler image")}"
+        loading="lazy"
+        decoding="async"
+    />
+    <p style="font-size: 0.8rem; color: #888;">
+        ${esc(a.caption || "Click to reveal spoiler")}
+    </p>
 </div>`,
-		),
+    ),
 
 	audio: (a) =>
 		html(

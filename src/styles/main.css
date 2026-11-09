@@ -144,12 +144,34 @@ article h2 {
 }
 
 .custom-md spoiler {
-  @apply bg-[var(--codeblock-bg)] hover:bg-transparent px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
+    @apply bg-[var(--codeblock-bg)] px-1 py-0.5 overflow-hidden rounded-md transition-all duration-150;
+    cursor: pointer;
+}
 
-  &:not(:hover) {
+.custom-md spoiler:not(.revealed) {
     color: var(--codeblock-bg);
-    * {
-        color: var(--codeblock-bg);
-    }
-  }
+}
+
+.custom-md spoiler:not(.revealed) * {
+    color: var(--codeblock-bg);
+}
+
+.custom-md spoiler.revealed {
+    background: transparent;
+    color: inherit;
+}
+
+.custom-md spoiler.revealed * {
+    color: inherit;
+}
+
+/* Click-to-reveal images */
+.custom-md img.spoiler-image {
+    filter: blur(20px);
+    cursor: pointer;
+    transition: filter 0.3s;
+}
+
+.custom-md img.spoiler-image.revealed {
+    filter: none;
 }

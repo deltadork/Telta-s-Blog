@@ -28,9 +28,16 @@ There's also another reason I'm hyping this up so much. H-scenes. They're fuckin
 
 Also, there is a certain scene in Katan route that literally gave me goosebumps.:spoiler[the scene where Katan and Enju turn themselves into platinum, to beat the infinity is insane. This is kinda like death if you think about it.]
 <div style="text-align: center; margin: 16px auto;">
-  <img src="/files/rakuen/Screenshot 2026-09-27 145546.png" width="500"
-       style="display: block; margin: 0 auto; filter: blur(20px); cursor: pointer; transition: filter 0.3s;"
-       onclick="event.stopPropagation(); event.preventDefault(); this.style.filter = this.style.filter === 'none' ? 'blur(20px)' : 'none';" loading="lazy" decoding="async" srcset="/generated/02f7139cd021-480.webp 480w, /generated/02f7139cd021-800.webp 800w, /generated/02f7139cd021-1200.webp 1200w, /generated/02f7139cd021-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 800px">
+  <img
+    src="/files/rakuen/Screenshot 2026-09-27 145546.png"
+    width="500"
+    class="spoiler-image"
+    style="display: block; margin: 0 auto;"
+    loading="lazy"
+    decoding="async"
+    srcset="/generated/02f7139cd021-480.webp 480w, /generated/02f7139cd021-800.webp 800w, /generated/02f7139cd021-1200.webp 1200w, /generated/02f7139cd021-1600.webp 1600w"
+    sizes="(max-width: 768px) 100vw, 800px"
+  >
   <p style="font-size: 0.8rem; color: #888;">Click to reveal spoiler</p>
 </div>
 
