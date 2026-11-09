@@ -3,13 +3,13 @@
 const apiBase = "https://telta-comments-api.87kruk.workers.dev";
 ---
 
-<section id="comments" class="card-base mt-8 p-4 md:p-5" data-comments-api={apiBase}>
-  <div class="flex items-center justify-between gap-3 mb-4">
-    <h2 class="text-xl font-bold">Comments</h2>
+<section id="comments" class="card-base mt-8 p-5 md:p-7" data-comments-api={apiBase}>
+  <div class="flex items-center justify-between gap-3 mb-5">
+    <h2 class="text-xl md:text-2xl font-bold">Comments</h2>
     <span id="comment-count" class="text-sm opacity-60">Loading…</span>
   </div>
 
-  <form id="comment-form" class="flex flex-col gap-3 mb-5">
+  <form id="comment-form" class="flex flex-col gap-3 mb-7">
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
       <label class="flex flex-col gap-1 text-sm">
         <span class="inline-flex items-baseline gap-1">
@@ -49,7 +49,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         name="content"
         required
         maxlength="5000"
-        rows="3"
+        rows="4"
         class="w-full rounded-xl border border-[var(--line-divider)] bg-transparent px-3 py-2 resize-y"
         placeholder="Write a comment…"
       ></textarea>
@@ -77,7 +77,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
     <p id="comment-message" class="text-sm" role="status" aria-live="polite"></p>
   </form>
 
-  <div id="comment-list" class="flex flex-col gap-3">
+  <div id="comment-list" class="flex flex-col gap-4">
     <p class="text-sm opacity-60">Loading comments…</p>
   </div>
 </section>
@@ -122,7 +122,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
     function appendLocalComment(nickname, content, parentCard = null) {
       const card = element(
         "article",
-        "rounded-xl border border-[var(--line-divider)] p-3 sm:p-4"
+        "rounded-xl border border-[var(--line-divider)] p-4"
       );
 
       const header = element(
@@ -198,7 +198,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         for (const comment of byParent.get(parentId) || []) {
           const card = element(
             "article",
-            "rounded-xl border border-[var(--line-divider)] p-3 sm:p-4"
+            "rounded-xl border border-[var(--line-divider)] p-4"
           );
 
           const header = element(
@@ -231,7 +231,7 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
           if (depth === 0) {
             const reply = element(
               "button",
-              "mt-2 text-sm font-semibold text-[var(--primary)] hover:underline",
+              "mt-3 text-sm font-semibold text-[var(--primary)] hover:underline",
               "Reply"
             );
 
@@ -282,16 +282,16 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
           name="content"
           required
           maxlength="5000"
-          rows="2"
+          rows="3"
           placeholder="Write a reply…"
           class="w-full rounded-lg border border-[var(--line-divider)] bg-transparent px-3 py-2 text-sm"
         ></textarea>
 
-        <div class="flex flex-wrap gap-2">
-          <button class="btn-regular rounded-lg px-3 py-1.5 text-sm" type="submit">
+        <div class="flex gap-2">
+          <button class="btn-regular rounded-lg px-3 py-1 text-sm" type="submit">
             Send reply
           </button>
-          <button class="rounded-lg px-3 py-1.5 text-sm opacity-70" type="button" data-cancel>
+          <button class="rounded-lg px-3 py-1 text-sm opacity-70" type="button" data-cancel>
             Cancel
           </button>
         </div>
