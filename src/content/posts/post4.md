@@ -11,13 +11,13 @@ draft: false
 Not my best month, but at least I found something truly impressive that made me want to try out more modern visual novels, which I tend to avoid. Let's start.
 
 <h2 style="text-align: center;">Dimension Totsu lovers</h2>
-<img src="/files/rakuen/6aa6ebf5-8df6-4707-bcd3-eb8b1617f33c.png" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/6aa6ebf5-8df6-4707-bcd3-eb8b1617f33c.png" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async" srcset="/generated/fdfa74ed4113-480.webp 480w, /generated/fdfa74ed4113-800.webp 800w, /generated/fdfa74ed4113-1200.webp 1200w, /generated/fdfa74ed4113-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 800px">
 <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 0;">Room that is impossible to leave without having sex</p>
 
 2026 eroge title by Crystallia. I stubbornly ignored it, because it seemed like an average overhyped story. I'd like to apologize to the developers, because it is kino. It might be the most entertaining visual novel I've read so far. There's just nothing quite like it, despite the fact that it doesn't really invent anything new. Totsuraba combines the features of both charage and chuunige in a balanced fashion, and that is already quite an achievement. Whole cast gets put to good use, even the side characters. Antagonists have some serious charisma too, especially protagonist's father.
 
 What people don't mention often is that the soundtrack is pretty fire too — some of the battle OST has been stuck in my head for days, like this one:
-<audio controls style="display: block; margin: 20px auto;">
+<audio controls style="display: block; margin: 20px auto;" preload="none">
   <source src="/files/rakuen/2-21. RAPID OPTIMIZER.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -30,7 +30,7 @@ Also, there is a certain scene in Katan route that literally gave me goosebumps.
 <div style="text-align: center; margin: 16px auto;">
   <img src="/files/rakuen/Screenshot 2026-09-27 145546.png" width="500"
        style="display: block; margin: 0 auto; filter: blur(20px); cursor: pointer; transition: filter 0.3s;"
-       onclick="event.stopPropagation(); event.preventDefault(); this.style.filter = this.style.filter === 'none' ? 'blur(20px)' : 'none';" />
+       onclick="event.stopPropagation(); event.preventDefault(); this.style.filter = this.style.filter === 'none' ? 'blur(20px)' : 'none';" loading="lazy" decoding="async" srcset="/generated/02f7139cd021-480.webp 480w, /generated/02f7139cd021-800.webp 800w, /generated/02f7139cd021-1200.webp 1200w, /generated/02f7139cd021-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 800px">
   <p style="font-size: 0.8rem; color: #888;">Click to reveal spoiler</p>
 </div>
 
@@ -39,20 +39,20 @@ Sometimes all you need from eroge are cute heroines and grand developments, and 
 I praise this one a lot, but in the end, does totsuraba deserve 88/100 on erogamescape? No, it's not even close to the real giants of the genre. This is not a kind of work that will change your life, nor will it make you impressed by a cohesive scenario. Perhaps such a strong reception of totsuraba in japanese community is an indicator of bishoujo eroge industry's steady decline. Still, I can safely recommend this visual novel to all readers because of its entertaining value.
 
 <h2 style="text-align: center;">Saiaku Naru Saiyaku Ningen Ni Sasasagu</h2>
-<img src="/files/rakuen/6a9f0f13-67e9-4e90-b312-e424d597f3dc.png" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/6a9f0f13-67e9-4e90-b312-e424d597f3dc.png" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async" srcset="/generated/6f38524dc491-480.webp 480w, /generated/6f38524dc491-800.webp 800w" sizes="(max-width: 768px) 100vw, 800px">
 
 Sasasagu finally got a Steam release (which is also a remake). It's my favorite visual novel right now, so I was eagerly waiting for this release. I've already written a review you can [read here](https://store.steampowered.com/app/4549300/My_Dearest_Direst_Disaster/). It is a long, coming of age story with exceptional direction and writing. The premise is strong: main character is a kid who lost the ability to see or hear any living creature, while the main heroine is a young girl who can't be perceived by anyone alive. It is a story about them saving each other from loneliness, but hurting each other due to the unnatural situation they end up in. Despite the fact that it is a slow burn, there is not a single redundant scene. Also the message about life in despair (or life with chronic disease) is exceptionally strong. Everyone who knows Japanese should read it.
 
 The Steam release has a new afterstory, and overall I'm very satisfied with what we got. To be fair, :spoiler[I expected true ending's Kuro to get an afterstory too, but it would be hard to implement without ruining the ending, so I can overlook it. Every afterstory was well written, but the best thing about them are the endings. I didn't cry, but I could have — the tears were welling up, I swear. I also cried many times reading the main story, so my tears had already dried up. Let's move on...]
 I haven't reread the game to see all the new CGs and changes, so I'll just state my opinion on the art style. It's not better than the old one. Yes, it's more polished, and they fixed some weird CGs, but new readers probably won't mind it — still, the fact that Kuro's eyes no longer shine like brilliants is a crime.
-<img src="/files/rakuen/New Project(7).jpg" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/New Project(7).jpg" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async" srcset="/generated/b7163f6aa2b7-480.webp 480w, /generated/b7163f6aa2b7-800.webp 800w, /generated/b7163f6aa2b7-1200.webp 1200w, /generated/b7163f6aa2b7-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 800px">
 <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 0;">New CG looks very good, I admit it</p>
 I'd advise reading the fan port of the game first, then skimming through the Steam version for the new CGs and afterstories.   
 
 EDIT: steam remake has new scenes and CGs in the main game, so maybe it is better to read it. I don't know. Just decide based on which artstyle you like more. Personally, I don't think main scenario lacked anything (more like it was too slow sometimes), but since I did not reread whole game I can't comment on it with confidence
 
 <h2 style="text-align: center;">Meidokissa</h2>
-<img src="/files/rakuen/6ab329c6-0f91-4078-a7c4-4509e1661468.png" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/6ab329c6-0f91-4078-a7c4-4509e1661468.png" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async" srcset="/generated/33bbbd4c6367-480.webp 480w, /generated/33bbbd4c6367-800.webp 800w, /generated/33bbbd4c6367-1200.webp 1200w, /generated/33bbbd4c6367-1600.webp 1600w" sizes="(max-width: 768px) 100vw, 800px">
 
 It's a nukige. The other VN from this developer is "Mainichi ga M!", which is the best nukige ever, hence why I had high expectations going into this one. Meidokissa takes a classic approach: protagonist lives with 4 heroines, and player should choose which heroine should he visit to get on her route. It definitely took many elements from Mainichi ga M — like the shitty animation for every h-scene, the overuse of the phrase 短小包茎ちんぽ — but what it doesn't have is any kind of plot. Or good heroines. Or good h-scenes. It's beyond "bad" in terms of plot. Everything works in favor of protagonist, characters are nothing more than his slaves. Also, all the characters are stupid beyond belief.
 
@@ -63,4 +63,4 @@ Only tsundere route was worth reading, since it at least resembled femdom, but i
 
 <h2 style="text-align: center;">Conclusion</h2>
 I think this new monthly format is pretty convenient, so I'll keep using it. I could probably do with more off-topic posts, but nothing came to mind, so I didn't post anything lately. I don't plan on abandoning the blog, I promise. Thanks for the reading.
-<img src="/files/rakuen/ezgif-44d76829bf26239a.gif" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/ezgif-44d76829bf26239a.gif" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async">

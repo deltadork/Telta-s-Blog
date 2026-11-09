@@ -24,6 +24,7 @@ import { parseDirectiveNode } from "./src/plugins/remark-directive-rehype.js";
 import { remarkExcerpt } from "./src/plugins/remark-excerpt.js";
 import { remarkReadingTime } from "./src/plugins/remark-reading-time.mjs";
 import { remarkShortcodes } from "./src/plugins/remark-shortcodes.js";
+import { rehypeOptimizeImages } from "./src/plugins/rehype-optimize-images.mjs";
 
 // https://astro.build/config
 export default defineConfig({
@@ -115,6 +116,7 @@ export default defineConfig({
 			parseDirectiveNode,
 		],
 		rehypePlugins: [
+			rehypeOptimizeImages,
 			rehypeKatex,
 			rehypeSlug,
 			[

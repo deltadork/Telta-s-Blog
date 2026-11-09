@@ -11,17 +11,17 @@ draft: false
 Product of the bygone era of golden age, when everyone were experimenting and trying to reach the success in the new chaotic market. The manifestation of people knowing they're doomed to fail, but still giving it their all. This visual novel is interesting both as a history artifact and a story. Rakuen is a galge released in 2004 by Terralune, and it's also a work that turned out to be the last produced by them. Most of the staff never worked on eroge ever again. This is very noticable in the work, since it's unusually self-aware. I'll say it in front, it's not a story for everyone. It doesn't always have good writing, and there are some rage inducing moments that you wouldn't see in any typical charage. But it is worth trying out if you like the artstyle and comedy focused stories. It's a good comedy with a style.
 
 <h2 style="text-align: center;">Story</h2>
-<img src="/files/rakuen/rakuen_eC6ZqG739g.png" width="500" style="display: block; margin: 0 auto;"/>  
+<img src="/files/rakuen/rakuen_eC6ZqG739g.png" width="500" style="display: block; margin: 0 auto;" loading="lazy" decoding="async" srcset="/generated/fa7cb8d66a2b-480.webp 480w, /generated/fa7cb8d66a2b-800.webp 800w" sizes="(max-width: 768px) 100vw, 800px">  
 
 Protagonist whose name is literally 僕 (Boku) is a failure, 'ronin', who is repeating a year at preparatory school for univeristy exams. He starts working at an eroge company as an artist, while living with his two little sisters. The plot in this VN is pretty thin, mostly it's focused on interactions between the characters, self-deprecatory humor, and some melodrama in the routes (that are pretty short). I'm not sure if I disliked the fact that there isn't enough "plot", or that authors tried to do it at all. And where there is "plot", it's either underdeveloped, poorly written, or bland. In my opinion, Rakuen is more moege leaning, so this isn't such a big problem though—you're mainly reading this for the romance and the comedy.
 
 <h2 style="text-align: center;">The style. ROCK.</h2>
 This work has a very unconventional artstyle, music and prose. Perhaps that is the reason why it was the last work from Terralune, but that's beside the point. Music is simply amazing. The whole soundtrack consists of energetic american rock tracks that, combined with atmosphere of sweaty otakus and corporate sloppiness, makes the reader feel dirty and very immersed. There is also a melancholic track that I like a lot, it reminds me of welcome to NHK. 
-<audio controls style="display: block; margin: 20px auto;">
+<audio controls style="display: block; margin: 20px auto;" preload="none">
   <source src="/files/rakuen/758ahb.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
-<audio controls style="display: block; margin: 20px auto;">
+<audio controls style="display: block; margin: 20px auto;" preload="none">
   <source src="/files/rakuen/1qdywu.mp3" type="audio/mpeg">
   Your browser does not support the audio element.
 </audio>
@@ -43,7 +43,7 @@ My personal standout is Mishiba senpai. Yes, the character on my pfp. She's Boku
 An's route is very underdeveloped and cliched. She's a little sister who "comforts" protagonist when he burns out from working, and that's it. Yes that's the whole plot. Heroine is self is cute, but come on.
 
 Now we have come to Sae's route. First of all, she has a dialogue that is the best one is the whole game. Basically it's about the essense of visual novels, here:
-<video controls style="display: block; margin: 20px auto; max-width: 100%; width: 500px;"><source src="/files/rakuen/rakuen_ZSC4NK3ng7.mp4" type="video/mp4">Your browser does not support the video tag.</video>
+<video controls style="display: block; margin: 20px auto; max-width: 100%; width: 500px;" preload="none" poster="/files/rakuen/rakuen-video-poster.webp"><source src="/files/rakuen/rakuen_ZSC4NK3ng7.mp4" type="video/mp4">Your browser does not support the video tag.</video>
 but ignoring this diaglouge, her route is the main problem of this VN as a whole. Her character is the problem. Because her route is focused on... <details>
 <summary>spoiler</summary>
 <p>NTR. Oh boy. Even if you enjoy NTR, there are no h-scenes like that, it's just pure humiliation. Sae felt lonely, and protagonist didn't respond to her calls, so she decided to give her first time to her mexican friend. After that she immediatly comes up to protag, he forgives her, and he immideatly fucks her to "make her forget" that mexican guy. During h-scene Sae says that protagonist's dick is smaller than Mexican's, that he was better at sex etc., but since she loves protagonist this sex is better. Alright.</p>

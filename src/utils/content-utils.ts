@@ -9,12 +9,9 @@ async function getRawSortedPosts() {
 		return import.meta.env.PROD ? data.draft !== true : true;
 	});
 
-	const sorted = allBlogPosts.sort((a, b) => {
-		const dateA = new Date(a.data.published);
-		const dateB = new Date(b.data.published);
-		return dateA > dateB ? -1 : 1;
-	});
-	return sorted;
+	return allBlogPosts.sort(
+		(a, b) => b.data.published.getTime() - a.data.published.getTime(),
+	);
 }
 
 export async function getSortedPosts() {

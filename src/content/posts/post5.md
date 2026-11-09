@@ -13,7 +13,7 @@ I didnt play much VNs recently, since the loss of innocence with my job was way 
 RPG games is a thing I avoided for a long time. There are some japanese games that I like (Rance series), but I consider myself too dumb for them. Luckily there are porn games with baby gameplay, so I tried playing some of them and will tell my impressions. Most are slop that I wont discuss here, but a couple of them were pretty fun. Anyways, starting.
 
 <h2 style="text-align: center;">Kusarihime Jamais Vu</h2>
-<img src="/files/rakuen/image.psd(1).jpg" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/image.psd(1).jpg" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async" srcset="/generated/c86e1fb8e764-480.webp 480w, /generated/c86e1fb8e764-800.webp 800w, /generated/c86e1fb8e764-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 800px">
 
 A tiny prequel to kusarihime. The original, in my opinion, has the best atmosphere out of any visual novel to date, so I knew I would enjoy it. Jamais vu preserves both atmosphere and story telling well so it was worth it.  
 
@@ -22,7 +22,7 @@ The prequel mostly deepens our understanding of relationship between Itsuki and 
 I definitely want to reread kusarihime some time later to fill in the gaps in my understanding. I also want to read some other works from Hoshizora Meteo, namely Cannonball and Forest, but this kind of literary prose would be more enjoyable to experience with N1+ level of japanese so I'd rather put them off for now.
 
 <h2 style="text-align: center;">Misuzu no Kuni</h2>
-<img src="/files/rakuen/6ac6601c-1c3f-4579-ac18-d94358cd38fa.png" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/6ac6601c-1c3f-4579-ac18-d94358cd38fa.png" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async" srcset="/generated/4cce0d29bedb-480.webp 480w, /generated/4cce0d29bedb-800.webp 800w, /generated/4cce0d29bedb-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 800px">
 Short story that acts as a prequel for the Kuni series. Even knowing this, I was very disappointed with misuzu no kuni, but let's talk about it in order.  
 
 The setting is alternative Japan, where a part of mainland's territory belongs to a tribe of people with telekinesis who live in isolation in their own country. 1 out of 10 000 people in japan also have these abilities, so they are treated as dangerous people. That's why they can't get education, live a normal life or even leave the country. The only way to go back to "normal" status is to prove that you can control your abilities by going to that country of telekinsis people and passing an exam after 3 years of training your abilities. Protagonist is one of those 1 in 10 000, and story starts with her going to this country.  
@@ -32,7 +32,7 @@ Pretty interesting, right? I thought so too. But the best thing about this visua
 I have also tried reading the next game in series, Kirin no Kuni, but it had the same problem of characters being bland so I couldn't get invested. Such a shame, considering this is a series I've been excited about for quite some time. Welp.
 
 <h2 style="text-align: center;">Akagami no Kijin</h2>
-<img src="\files\rakuen\6ac6b08b-c756-4496-882b-52a83d51a1e9.png" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/6ac6b08b-c756-4496-882b-52a83d51a1e9.png" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async" srcset="/generated/a710236fd34b-480.webp 480w, /generated/a710236fd34b-800.webp 800w, /generated/a710236fd34b-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 800px">
 <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 0;"></p>
 
 Basically, it's a high quality nukige. It takes a rare archetype of protagonist - an emotionless commander in the kingdom - and forces her to have sex with every character from the story by her own will. What makes it work is that she isn't a blank paper, but there is not a single moment where she stops being cold and calculating. She views sex and her own enjoyment in the same mechanical way, and that is surprisingly hot. H-scenes are mostly pretty good, although way too short. I'm judging them as someone who has read countless nukige with long ass sex scenes so maybe I'm biased as a slop consumer.
@@ -44,7 +44,7 @@ There are many things to complain about, but they don't ruin the work. Firstly, 
 This game basically showed me the potential of nukiges with gameplay, and I'm very thankful for that.
 
 <h2 style="text-align: center;">Waisatsudo Delta </h2>
-<img src="/files/rakuen/image.png" width="500" style="display: block; margin: 24px auto;"/>
+<img src="/files/rakuen/image.png" width="500" style="display: block; margin: 24px auto;" loading="lazy" decoding="async">
 <p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 0;"></p>
 Waisatsudo delta is the first game in the delta series made in 2015. It's a porn game with 2d pixel animations where you bully cute girls. Protagonist got isekaid in the fantasy kinda world, and now he makes porn to earn money by kidnapping cute girls. He gets all the equipment and money for production and tools from his cynical robot boss that only wants MONEY. No explanation or info dumps, just this weird ass plot right from the start.  
 
