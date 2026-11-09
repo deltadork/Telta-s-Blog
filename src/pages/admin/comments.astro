@@ -92,8 +92,25 @@ const apiBase = "https://telta-comments-api.87kruk.workers.dev";
         event.preventDefault(); message.textContent = "";
         const password = new FormData(event.currentTarget).get("password");
         const button = event.currentTarget.querySelector("button"); button.disabled = true;
-        try { const r = await fetch(`${apiBase}/admin/login`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ password }) }); const d = await r.json(); if (!r.ok) throw new Error(d.error || "Login failed."); token = d.token; sessionStorage.setItem("telta-comments-admin-token", token); event.currentTarget.reset(); showPanel(); }
-        catch (e) { message.textContent = e.message; alert(e.message); }
+        const form = event.currentTarget;
+
+try {
+    const r = await fetch(`${apiBase}/admin/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password })
+    });
+
+    const d = await r.json();
+
+    if (!r.ok) throw new Error(d.error || "Login failed.");
+
+    token = d.token;
+    sessionStorage.setItem("telta-comments-admin-token", token);
+
+    form.reset();
+    showPanel();
+}
         finally { button.disabled = false; }
       });
       document.getElementById("refresh").addEventListener("click", load);
