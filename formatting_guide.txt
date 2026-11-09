@@ -1,75 +1,17 @@
-==================================================
-            FUWARI BLOG CHEAT SHEET
-==================================================
 
-1. THE HEADER (FRONTMATTER)
-Place this at the very top of your .md file. Only ONE per file.
-
----
-title: Your VN Review Title
-published: 2026-08-22
-description: Brief summary for the index page.
-tags: [Visual Novel, Review]
-category: Reviews
-draft: false
----
-
-
-2. BASIC TEXT
-## Main Section Header
-### Subsection Header
-**Bold Text**
-*Italic Text*
-Inline spoiler: :spoiler[hidden text goes here]
-
-
-3. IMAGES & 18+ CONTENT (Host everything on Catbox.moe)
-
-- Normal Image:
-![Description](https://files.catbox.moe/image.png)
-
-- 18+ / NSFW Spoiler Tag:
-<details>
-  <summary>Click to view 18+ CG</summary>
-  <img src="https://files.catbox.moe/image.png" alt="NSFW" />
-</details>
-
-
-4. VIDEOS
-
-- YouTube (Unlisted): Paste the embed code from YouTube:
-<iframe width="100%" height="468" src="https://www.youtube.com/embed/YOUR_ID" frameborder="0" allowfullscreen></iframe>
-
-- Direct Catbox .mp4:
-<video width="100%" controls preload="metadata">
-  <source src="https://files.catbox.moe/video.mp4" type="video/mp4">
-</video>
-
-
-5. CALLOUT BOXES (Admonitions)
-
-:::warning[Skip This Route]
-Your warning text goes here.
-:::
-
-(Other types: note, tip, important, caution)
-Use <br> tags: Drop one or more between paragraphs for instant vertical space:
-
-
-6. Markdown
-
-First paragraph.
-
-<br>
-<br>
-
-Second paragraph.
-
-7. For viewing draft site
+1. For viewing draft site
 
 npm run dev
 http://localhost:4321
 
+2. Passwords
+ADMIN_SECRET = ;f<3I9d0Y8P#6Zh6ecK_O$JR|nOzT{;W
+ADMIN_PASSWORD = Denya3005
+RATE_LIMIT_SALT = m4Z9t]0o=A:RSR{U_37)^)`iVH'=nEZB
+
+
 ==================================================
 DEPLOYING: Save file (Ctrl+S) -> Run deploy.bat
 ==================================================
+
+

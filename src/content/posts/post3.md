@@ -51,4 +51,3 @@ In the end mainchi ga M is a very risky project with relatively high budget, tha
 
 <h2 style="text-align: center;">Conclusion</h2>
 I wanted to add more hidden gems in this list, but I know the chance of this site being nuked would grow exponentially so I didn't risk it. Nukige is life.
-<Comment />

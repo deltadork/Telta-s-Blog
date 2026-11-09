@@ -1,14 +1,16 @@
-// Shortcodes: turn short ::tags into the long HTML you used to type by hand.
+// Shortcodes turn compact ::directives into the custom HTML used by the blog.
+//
 //   ::section[Title]
-//   ::img{src="pic.png" caption="optional"}
-//   ::nsfw{src="pic.png"}
-//   ::audio{src="song.mp3" caption="optional"}
-//   ::video{src="clip.mp4"}
-// A bare filename (no leading / or http) is looked up in /files/.
-// Existing :spoiler[...] and the admonitions are not touched.
+//   ::img{src="/files/example.png" caption="optional"}
+//   ::nsfw{src="/files/example.png" caption="Click to reveal spoiler"}
+//   ::audio{src="/files/example.mp3" caption="optional"}
+//   ::video{src="/files/example.mp4" poster="/files/poster.webp"}
+//
+// Bare filenames are resolved inside /files/. Existing :spoiler[...] syntax
+// is intentionally left untouched.
 
-const esc = (s = "") =>
-	String(s)
+const esc = (value = "") =>
+	String(value)
 		.replace(/&/g, "&amp;")
 		.replace(/"/g, "&quot;")
 		.replace(/</g, "&lt;")
@@ -17,9 +19,9 @@ const esc = (s = "") =>
 const resolve = (src = "") =>
 	/^(https?:)?\/\//.test(src) || src.startsWith("/") ? src : `/files/${src}`;
 
-const caption = (text) =>
+const caption = (text, margin = "0") =>
 	text
-		? `\n<p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: 0;">${esc(text)}</p>`
+		? `\n<p style="text-align: center; font-size: 0.85rem; color: #888; margin-top: ${margin};">${esc(text)}</p>`
 		: "";
 
 const textOf = (node) =>
@@ -27,9 +29,15 @@ const textOf = (node) =>
 
 const html = (value) => ({ type: "html", value });
 
+const imageAttributes = (a) => {
+	const srcset = a.srcset ? ` srcset="${esc(a.srcset)}"` : "";
+	const sizes = a.sizes ? ` sizes="${esc(a.sizes)}"` : "";
+	return `${srcset}${sizes}`;
+};
+
 const builders = {
-	// real heading node, so the table of contents and anchors keep working
-	section: (_a, label) => ({
+	// Keep this as a real heading so the table of contents and anchors work.
+	section: (_attributes, label) => ({
 		type: "heading",
 		depth: 2,
 		children: [{ type: "text", value: label }],
@@ -38,40 +46,43 @@ const builders = {
 
 	img: (a) =>
 		html(
-			`<img src="${esc(resolve(a.src))}" width="${esc(a.width || 500)}" style="display: block; margin: 24px auto; max-width: 100%;" alt="${esc(a.alt || a.caption || "")}" />${caption(a.caption)}`,
+			`<img src="${esc(resolve(a.src))}" width="${esc(a.width || 500)}" style="display: block; margin: 24px auto; max-width: 100%;" alt="${esc(a.alt || a.caption || "")}" loading="lazy" decoding="async"${imageAttributes(a)} />${caption(a.caption)}`,
 		),
 
-	// blurred image, click to reveal
+	// The first click reveals the image; the next click opens PhotoSwipe.
 	nsfw: (a) =>
-    html(
-        `<div style="text-align: center; margin: 16px auto;">
-    <img
-        class="spoiler-image"
-        src="${esc(resolve(a.src))}"
-        width="${esc(a.width || 500)}"
-        style="display: block; margin: 0 auto; max-width: 100%;"
-        alt="${esc(a.caption || "Spoiler image")}"
-        loading="lazy"
-        decoding="async"
-    />
-    <p style="font-size: 0.8rem; color: #888;">
-        ${esc(a.caption || "Click to reveal spoiler")}
-    </p>
+		html(
+			`<div style="text-align: center; margin: 16px auto;">
+	<img
+		class="spoiler-image"
+		src="${esc(resolve(a.src))}"
+		width="${esc(a.width || 500)}"
+		style="display: block; margin: 0 auto; max-width: 100%;"
+		alt="${esc(a.alt || a.caption || "Spoiler image")}"
+		loading="lazy"
+		decoding="async"${imageAttributes(a)}
+	/>
+	<p style="font-size: 0.8rem; color: #888;">${esc(a.caption || "Click to reveal spoiler")}</p>
 </div>`,
-    ),
+		),
 
 	audio: (a) =>
 		html(
-			`<audio controls style="display: block; margin: 20px auto;">
-  <source src="${esc(resolve(a.src))}" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>${caption(a.caption)}`,
+			`<audio controls preload="none" style="display: block; margin: 20px auto; max-width: 100%;">
+	<source src="${esc(resolve(a.src))}">
+	Your browser does not support the audio element.
+</audio>${caption(a.caption, "4px")}`,
 		),
 
-	video: (a) =>
-		html(
-			`<video controls style="display: block; margin: 20px auto; max-width: 100%; width: 500px;"><source src="${esc(resolve(a.src))}" type="video/mp4">Your browser does not support the video tag.</video>${caption(a.caption)}`,
-		),
+	video: (a) => {
+		const poster = a.poster ? ` poster="${esc(resolve(a.poster))}"` : "";
+		return html(
+			`<video controls preload="none" playsinline width="${esc(a.width || 800)}"${poster} style="display: block; margin: 20px auto; max-width: 100%; height: auto;">
+	<source src="${esc(resolve(a.src))}">
+	Your browser does not support the video element.
+</video>${caption(a.caption, "4px")}`,
+		);
+	},
 };
 
 function walk(node) {

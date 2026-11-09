@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <title>Telta's Post Editor</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand-row">
+        <div class="brand-mark">T</div>
+        <div><strong>Telta's Blog</strong><span>LOCAL POST EDITOR</span></div>
+      </div>
+      <button class="button button-primary new-button" id="newPostButton"><span>＋</span> New post</button>
+      <button class="button button-subtle monthly-button" id="monthlyButton">＋ Monthly update template</button>
+      <div class="sidebar-heading"><span>Your posts</span><button class="icon-button" id="refreshPosts" title="Refresh posts">↻</button></div>
+      <div class="post-list" id="postList"><div class="empty-state">Loading posts…</div></div>
+      <div class="sidebar-footer"><span class="status-dot"></span> Local only · Files stay on this PC</div>
+    </aside>
+
+    <main class="workspace">
+      <header class="topbar">
+        <div class="topbar-title"><span class="eyebrow">WRITING WORKSPACE</span><h1 id="workspaceTitle">New post</h1></div>
+        <div class="topbar-actions">
+          <span class="save-state" id="saveState">Not saved yet</span>
+          <button class="button button-secondary" id="previewButton">↗ Preview</button>
+          <button class="button button-primary" id="saveButton">Save post</button>
+        </div>
+      </header>
+
+      <div class="editor-layout">
+        <section class="editor-column">
+          <section class="panel metadata-panel">
+            <div class="panel-heading"><div><span class="eyebrow">POST SETTINGS</span><h2>Details</h2></div><span class="panel-icon">⚙</span></div>
+            <div class="form-grid">
+              <label class="field field-wide"><span>Title</span><input id="title" type="text" placeholder="Post title"></label>
+              <label class="field"><span>Published</span><input id="published" type="date"></label>
+              <label class="field"><span>Category</span><input id="category" type="text" placeholder="Monthly update"></label>
+              <label class="field field-wide"><span>Description</span><input id="description" type="text" placeholder="Short description shown on the blog"></label>
+              <label class="field field-wide"><span>Tags <small>Comma-separated</small></span><input id="tags" type="text" placeholder="Visual Novel, Reviews"></label>
+              <div class="field field-wide cover-field"><span>Cover image</span><div class="cover-row"><input id="cover" type="text" placeholder="/files/rakuen/cover.png"><button class="button button-secondary button-small" id="chooseCover">Choose file</button><button class="button button-quiet button-small" id="clearCover">Clear</button></div></div>
+              <label class="field"><span>Language <small>Optional</small></span><input id="lang" type="text" placeholder="en"></label>
+              <label class="check-field"><input id="draft" type="checkbox" checked><span><strong>Draft</strong><small>Hidden from the published site</small></span></label>
+            </div>
+          </section>
+
+          <section class="panel content-panel">
+            <div class="panel-heading content-heading"><div><span class="eyebrow">YOUR ARTICLE</span><h2>Content</h2><p>Use the buttons to insert your usual formatting. You can still edit the Markdown directly.</p></div><span class="panel-icon">✎</span></div>
+            <div class="toolbar-group">
+              <div class="toolbar-label">STRUCTURE</div>
+              <div class="toolbar-buttons">
+                <button class="tool-button" data-action="section">＋ Centered heading</button>
+                <button class="tool-button" data-action="game">＋ Game review</button>
+                <button class="tool-button" data-action="closing">＋ Closing thoughts</button>
+                <button class="tool-button" data-action="spoiler">◉ Text spoiler</button>
+              </div>
+            </div>
+            <div class="toolbar-group">
+              <div class="toolbar-label">MEDIA</div>
+              <div class="toolbar-buttons">
+                <button class="tool-button" data-action="image">▧ Image</button>
+                <button class="tool-button" data-action="spoiler-image">◉ Spoiler image</button>
+                <button class="tool-button" data-action="audio">♫ Audio</button>
+                <button class="tool-button" data-action="video">▷ Video</button>
+              </div>
+            </div>
+            <div class="toolbar-group toolbar-formatting">
+              <div class="toolbar-label">MARKDOWN</div>
+              <div class="toolbar-buttons">
+                <button class="tool-button tool-compact" data-action="bold"><strong>B</strong></button>
+                <button class="tool-button tool-compact" data-action="italic"><em>I</em></button>
+                <button class="tool-button tool-compact" data-action="link">↗ Link</button>
+                <button class="tool-button tool-compact" data-action="quote">❝ Quote</button>
+                <button class="tool-button tool-compact" data-action="list">• List</button>
+                <button class="tool-button tool-compact" data-action="html">‹ HTML ›</button>
+              </div>
+            </div>
+            <div class="editor-tabs"><button class="tab active" id="markdownTab">Markdown</button><button class="tab" id="previewTab">Rendered preview</button><span class="editor-hint">Ctrl + S to save</span></div>
+            <textarea id="body" class="markdown-editor" spellcheck="false" placeholder="Start writing…"></textarea>
+            <iframe id="previewFrame" class="preview-frame" title="Actual blog preview" hidden></iframe>
+            <div class="editor-footer"><span id="wordCount">0 words</span><span>Markdown · Your original formatting is preserved</span></div>
+          </section>
+        </section>
+
+        <aside class="right-column">
+          <section class="panel quick-panel"><span class="eyebrow">QUICK GUIDE</span><h2>Your shortcuts</h2><div class="guide-item"><span class="guide-symbol">H</span><div><strong>Centered heading</strong><code>::section[Title]</code></div></div><div class="guide-item"><span class="guide-symbol">▧</span><div><strong>Image</strong><code>::img{src="/files/..."}</code></div></div><div class="guide-item"><span class="guide-symbol">◉</span><div><strong>Spoiler image</strong><code>::nsfw{src="/files/..."}</code></div></div><div class="guide-item"><span class="guide-symbol">♫</span><div><strong>Audio / video</strong><code>::audio{…} · ::video{…}</code></div></div><div class="guide-item"><span class="guide-symbol">S</span><div><strong>Text spoiler</strong><code>:spoiler[Hidden text]</code></div></div></section>
+          <section class="panel tips-panel"><span class="eyebrow">LOCAL TOOL</span><h2>Nothing gets published automatically</h2><p>Save writes a normal Markdown file into <code>src/content/posts</code>. Your blog's existing Astro shortcodes and styling handle the final result.</p><p>Use <strong>Preview</strong> to see the real post in your local Astro site before deploying.</p></section>
+        </aside>
+      </div>
+    </main>
+  </div>
+
+  <dialog id="mediaDialog" class="media-dialog">
+    <div class="dialog-header"><div><span class="eyebrow">MEDIA LIBRARY</span><h2 id="mediaTitle">Choose an image</h2></div><button class="icon-button" id="closeMedia" aria-label="Close">×</button></div>
+    <div class="media-controls"><input id="mediaSearch" type="search" placeholder="Search your files…"><label class="button button-primary upload-button">↑ Upload file<input id="uploadInput" type="file" hidden></label></div>
+    <div class="upload-note">Uploads are saved to <code>public/files/editor/</code>. PNG/JPG/WebP images also get responsive WebP variants automatically.</div>
+    <div id="mediaList" class="media-list"><div class="empty-state">Loading media…</div></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

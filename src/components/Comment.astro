@@ -1,4 +1,147 @@
 ---
+const apiBase = "https://telta-comments-api.87kruk.workers.dev";
 ---
 
-<div></div>
+<section id="comments" class="card-base mt-8 p-5 md:p-7" data-comments-api={apiBase}>
+  <div class="flex items-center justify-between gap-3 mb-5">
+    <h2 class="text-xl md:text-2xl font-bold">Comments</h2>
+    <span id="comment-count" class="text-sm opacity-60">Loading…</span>
+  </div>
+
+  <form id="comment-form" class="flex flex-col gap-3 mb-7">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <label class="flex flex-col gap-1 text-sm">Nickname <span class="text-red-500">*</span>
+        <input name="nickname" required minlength="2" maxlength="40" autocomplete="nickname" class="w-full rounded-xl border border-[var(--line-divider)] bg-transparent px-3 py-2" placeholder="Your nickname" />
+      </label>
+      <label class="flex flex-col gap-1 text-sm">Email <span class="opacity-50">(optional, not displayed)</span>
+        <input name="email" type="email" maxlength="254" autocomplete="email" class="w-full rounded-xl border border-[var(--line-divider)] bg-transparent px-3 py-2" placeholder="you@example.com" />
+      </label>
+    </div>
+    <label class="flex flex-col gap-1 text-sm">Comment <span class="text-red-500">*</span>
+      <textarea name="content" required maxlength="5000" rows="4" class="w-full rounded-xl border border-[var(--line-divider)] bg-transparent px-3 py-2 resize-y" placeholder="Write a comment…"></textarea>
+    </label>
+    <div class="sr-only" aria-hidden="true">
+      <label>Leave this field empty<input name="website" tabindex="-1" autocomplete="off" /></label>
+    </div>
+    <div class="flex flex-wrap items-center justify-between gap-3">
+      <p class="text-xs opacity-60">Comments are held for moderation before appearing.</p>
+      <button type="submit" class="btn-regular rounded-xl px-5 py-2 font-semibold">Submit comment</button>
+    </div>
+    <p id="comment-message" class="text-sm" role="status" aria-live="polite"></p>
+  </form>
+
+  <div id="comment-list" class="flex flex-col gap-4">
+    <p class="text-sm opacity-60">Loading comments…</p>
+  </div>
+</section>
+
+<script define:vars={{ apiBase }}>
+  const root = document.getElementById("comments");
+  if (root && !root.dataset.initialized) {
+    root.dataset.initialized = "true";
+    const form = root.querySelector("#comment-form");
+    const list = root.querySelector("#comment-list");
+    const message = root.querySelector("#comment-message");
+    const count = root.querySelector("#comment-count");
+    const slug = decodeURIComponent(location.pathname.replace(/^\/+|\/+$/g, ""));
+
+    const element = (tag, className, value) => {
+      const node = document.createElement(tag);
+      if (className) node.className = className;
+      if (value !== undefined) node.textContent = value;
+      return node;
+    };
+
+    function renderComments(comments) {
+      list.replaceChildren();
+      count.textContent = `${comments.length} ${comments.length === 1 ? "comment" : "comments"}`;
+      if (!comments.length) {
+        list.append(element("p", "text-sm opacity-60", "No comments yet. Be the first to comment."));
+        return;
+      }
+      const byParent = new Map();
+      for (const comment of comments) {
+        const key = comment.parent_id || 0;
+        if (!byParent.has(key)) byParent.set(key, []);
+        byParent.get(key).push(comment);
+      }
+      const renderGroup = (parentId, container, depth = 0) => {
+        for (const comment of byParent.get(parentId) || []) {
+          const card = element("article", "rounded-xl border border-[var(--line-divider)] p-4");
+          const header = element("div", "flex flex-wrap items-center gap-x-3 gap-y-1 mb-2");
+          header.append(element("strong", "font-semibold", comment.nickname));
+          header.append(element("time", "text-xs opacity-50", new Date(comment.created_at * 1000).toLocaleString()));
+          card.append(header);
+          const body = element("p", "text-sm whitespace-pre-wrap break-words", comment.content);
+          card.append(body);
+          if (depth === 0) {
+            const reply = element("button", "mt-3 text-sm font-semibold text-[var(--primary)] hover:underline", "Reply");
+            reply.type = "button";
+            reply.addEventListener("click", () => showReplyForm(comment.id, card));
+            card.append(reply);
+          }
+          container.append(card);
+          if (depth === 0 && byParent.has(comment.id)) {
+            const replies = element("div", "ml-4 sm:ml-8 mt-3 flex flex-col gap-3");
+            renderGroup(comment.id, replies, 1);
+            container.append(replies);
+          }
+        }
+      };
+      renderGroup(0, list);
+    }
+
+    function showReplyForm(parentId, card) {
+      if (card.querySelector(".reply-form")) return;
+      const replyForm = element("form", "reply-form mt-3 flex flex-col gap-2");
+      replyForm.innerHTML = '<input name="nickname" required minlength="2" maxlength="40" placeholder="Nickname" class="w-full rounded-lg border border-[var(--line-divider)] bg-transparent px-3 py-2 text-sm"><textarea name="content" required maxlength="5000" rows="3" placeholder="Write a reply…" class="w-full rounded-lg border border-[var(--line-divider)] bg-transparent px-3 py-2 text-sm"></textarea><div class="flex gap-2"><button class="btn-regular rounded-lg px-3 py-1 text-sm" type="submit">Send reply</button><button class="rounded-lg px-3 py-1 text-sm opacity-70" type="button" data-cancel>Cancel</button></div><p class="text-sm" role="status"></p>';
+      replyForm.querySelector("[data-cancel]").addEventListener("click", () => replyForm.remove());
+      replyForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const data = new FormData(replyForm);
+        const status = replyForm.querySelector('[role="status"]');
+        const submit = replyForm.querySelector('button[type="submit"]');
+        submit.disabled = true;
+        try {
+          const response = await fetch(`${apiBase}/comments`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ post: slug, parent_id: parentId, nickname: data.get("nickname"), content: data.get("content") }) });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.error || "Could not submit reply.");
+          status.textContent = "Reply submitted for moderation.";
+          replyForm.reset();
+          submit.remove();
+        } catch (error) { status.textContent = error.message; submit.disabled = false; }
+      });
+      card.append(replyForm);
+    }
+
+    async function loadComments() {
+      try {
+        const response = await fetch(`${apiBase}/comments?post=${encodeURIComponent(slug)}`);
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || "Could not load comments.");
+        renderComments(data.comments || []);
+      } catch (error) {
+        list.replaceChildren(element("p", "text-sm text-red-500", `Comments could not be loaded: ${error.message}`));
+        count.textContent = "Unavailable";
+      }
+    }
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      message.textContent = "Submitting…";
+      const submit = form.querySelector('button[type="submit"]');
+      submit.disabled = true;
+      const data = new FormData(form);
+      try {
+        const response = await fetch(`${apiBase}/comments`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ post: slug, nickname: data.get("nickname"), email: data.get("email"), content: data.get("content"), website: data.get("website") }) });
+        const result = await response.json();
+        if (!response.ok) throw new Error(result.error || "Could not submit comment.");
+        message.textContent = result.message || "Comment submitted for moderation.";
+        form.reset();
+      } catch (error) { message.textContent = error.message; }
+      finally { submit.disabled = false; }
+    });
+
+    loadComments();
+  }
+</script>

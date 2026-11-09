@@ -15,4 +15,3 @@ Obviously, this won't be a full replacement. It will be more like a cleaned up v
 
 よろしくお願いいたします。
 
-<Comment />
